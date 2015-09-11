@@ -1,0 +1,1992 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>doctest — Тестирование интерактивных примеров на Python — python-lab 1.0a documentation</title>
+    
+    <link rel="stylesheet" href="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/default.css" type="text/css">
+    <link rel="stylesheet" href="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/pygments.css" type="text/css">
+    
+    <script src="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/analytics.js" async=""></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/jquery.js"></script>
+    <script type="text/javascript" src="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/underscore.js"></script>
+    <script type="text/javascript" src="doctest%20%E2%80%94%20%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%20%D0%BD%D0%B0%20Python%20%E2%80%94%20python-lab%201.0a%20documentation_files/doctools.js"></script>
+    <link rel="top" title="python-lab 1.0a documentation" href="http://python-lab.ru/index.html">
+    <link rel="up" title="Документация Python 2.7!" href="http://python-lab.ru/documentation/index.html">
+    <link rel="next" title="pdb — Отладчик Python" href="http://python-lab.ru/documentation/27/stdlib/pdb.html">
+    <link rel="prev" title="inspect — Инспекция “живых” объектов" href="http://python-lab.ru/documentation/27/stdlib/inspect.html">
+ 
+<script type="text/javascript">
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://python-lab.ru/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://python-lab.ru/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://python-lab.ru/documentation/27/stdlib/pdb.html" title="pdb — Отладчик Python" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://python-lab.ru/documentation/27/stdlib/inspect.html" title="inspect — Инспекция “живых” объектов" accesskey="P">previous</a> |</li>
+        <li><a href="http://python-lab.ru/index.html">python-lab 1.0a documentation</a> »</li>
+          <li><a href="http://python-lab.ru/documentation/index.html" accesskey="U">Документация Python 2.7!</a> »</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-doctest">
+<span id="doctest-python"></span><h1><a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> — Тестирование интерактивных примеров на Python<a class="headerlink" href="#module-doctest" title="Permalink to this headline">¶</a></h1>
+<p>Модуль <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> ищет куски текста, которые выглядят как
+интерактивные сессии Python и затем выполняет эти сессии, чтобы проверить,
+что они работают точно так же, как показано. Есть несколько стандартных
+причин, чтобы использовать doctest:</p>
+<ul class="simple">
+<li>Для того, чтобы проверить актуальность строк документации, убедившись,
+что все интерактивные примеры работают именно так, как задокументировано.</li>
+<li>Чтобы организовать регрессионное тестирование, проверяя, что интерактивные
+примеры из тестового файла или тестового объекта работают как ожидается.</li>
+<li>Чтобы написать руководство для пакета, иллюстрированное примерами
+ввода-вывода. В зависимости от того, на что обращается внимание -
+на примеры или на пояснительный текст, это можно назвать либо
+“литературным тестированием”, либо “исполняемой документацией”.</li>
+</ul>
+<p>Вот полный, но небольшой пример модуля:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">Это модуль-пример.</span>
+
+<span class="sd">Этот модуль предоставляет одну функцию - factorial().  Например,</span>
+
+<span class="sd">&gt;&gt;&gt; factorial(5)</span>
+<span class="sd">120</span>
+<span class="sd">"""</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">"""Возвращает факториал числа n, которое является числом &gt;= 0.</span>
+
+<span class="sd">    Если резульатат умещается в int, возвращается int.</span>
+<span class="sd">    Иначе возвращается long.</span>
+
+<span class="sd">    &gt;&gt;&gt; [factorial(n) for n in range(6)]</span>
+<span class="sd">    [1, 1, 2, 6, 24, 120]</span>
+<span class="sd">    &gt;&gt;&gt; [factorial(long(n)) for n in range(6)]</span>
+<span class="sd">    [1, 1, 2, 6, 24, 120]</span>
+<span class="sd">    &gt;&gt;&gt; factorial(30)</span>
+<span class="sd">    265252859812191058636308480000000L</span>
+<span class="sd">    &gt;&gt;&gt; factorial(30L)</span>
+<span class="sd">    265252859812191058636308480000000L</span>
+<span class="sd">    &gt;&gt;&gt; factorial(-1)</span>
+<span class="sd">    Traceback (most recent call last):</span>
+<span class="sd">        ...</span>
+<span class="sd">    ValueError: n must be &gt;= 0</span>
+
+<span class="sd">    Можно вычислять факториал числа с десятичной частью, если она</span>
+<span class="sd">    равна 0:</span>
+<span class="sd">    &gt;&gt;&gt; factorial(30.1)</span>
+<span class="sd">    Traceback (most recent call last):</span>
+<span class="sd">        ...</span>
+<span class="sd">    ValueError: n must be exact integer</span>
+<span class="sd">    &gt;&gt;&gt; factorial(30.0)</span>
+<span class="sd">    265252859812191058636308480000000L</span>
+
+<span class="sd">    Кроме того, число не должно быть слишком большим:</span>
+<span class="sd">    &gt;&gt;&gt; factorial(1e100)</span>
+<span class="sd">    Traceback (most recent call last):</span>
+<span class="sd">        ...</span>
+<span class="sd">    OverflowError: n too large</span>
+<span class="sd">    """</span>
+
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">"n must be &gt;= 0"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">"n must be exact integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>  <span class="c"># перехватываем значения типа 1e300</span>
+        <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s">"n too large"</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">factor</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">factor</span>
+        <span class="n">factor</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Если Вы запустите <tt class="file docutils literal"><span class="pre">example.py</span></tt> прямо из командной строки, то, <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>
+выполнит своё волшебство:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python example.py
+$
+</pre></div>
+</div>
+<p>Тут нет никакого вывода! Это нормально и это означает, что все примеры работают.
+Передайте <tt class="docutils literal"><span class="pre">-v</span></tt> скрипту и <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> выведет детальный лог того,
+что он делает и подведёт итог в конце:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python example.py -v
+Trying:
+    factorial(5)
+Expecting:
+    120
+ok
+Trying:
+    [factorial(n) for n in range(6)]
+Expecting:
+    [1, 1, 2, 6, 24, 120]
+ok
+Trying:
+    [factorial(long(n)) for n in range(6)]
+Expecting:
+    [1, 1, 2, 6, 24, 120]
+ok
+</pre></div>
+</div>
+<p>И так далее, вплоть до:</p>
+<div class="highlight-python"><div class="highlight"><pre>Trying:
+    factorial(1e100)
+Expecting:
+    Traceback (most recent call last):
+        ...
+    OverflowError: n too large
+ok
+2 items passed all tests:
+   1 tests in __main__
+   8 tests in __main__.factorial
+9 tests in 2 items.
+9 passed and 0 failed.
+Test passed.
+$
+</pre></div>
+</div>
+<p>И это всё, что Вам надо знать начать использовать <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>!
+Просто начните. Остальные разделы дадут Вам больше информации. Обратите
+внимание, что есть много примеров доктестов в стандартных тестах
+Python и его библиотеках. Особенно полезные примеры можно найти
+в стандартном тестовом файле
+<tt class="file docutils literal"><span class="pre">Lib/test/test_doctest.py</span></tt>.</p>
+<div class="section" id="docstrings">
+<span id="doctest-simple-testmod"></span><h2>Простое использование: Проверка примеров в Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+<p>Самый простой способ начать использовать doctest`ы (но не обязательно тот
+способ, которым Вы будете пользоваться и дальше) - завершать каждый модуль
+<tt class="xref py py-mod docutils literal"><span class="pre">M</span></tt> с:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>и тогда <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> будет проверять строки документации в модуле <tt class="xref py py-mod docutils literal"><span class="pre">M</span></tt>.</p>
+<p>Запуск модуля как скрипта приводит к тому, что
+примеры из строк документации выполняются и проверяются:</p>
+<div class="highlight-python"><div class="highlight"><pre>python M.py
+</pre></div>
+</div>
+<p>Такое выполнение не отобразит ничего, пока какой-либо пример не пройдёт тест, и тогда
+сообщение об ошибке будет выведено на stdout, а последней строкой будет
+<tt class="docutils literal"><span class="pre">***Test</span> <span class="pre">Failed***</span> <span class="pre">N</span> <span class="pre">failures.</span></tt>, где <em>N</em> - количетво не пройденных тестов.</p>
+<p>Если запустить его с аргументом <tt class="docutils literal"><span class="pre">-v</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>python M.py -v
+</pre></div>
+</div>
+<p>то тогда на стандартный вывод попадёт детальный отчёт о всех тестах вместе с
+итогом в конце.</p>
+<p>Вы можете принудительно включить подробный вывод, передав <tt class="docutils literal"><span class="pre">verbose=True</span></tt> в <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>, или
+отключить его, передав <tt class="docutils literal"><span class="pre">verbose=False</span></tt>.  В любом из этих двух случаев,
+<tt class="docutils literal"><span class="pre">sys.argv</span></tt> не проверяется функцией <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a> (так что наличие или отсутствие <tt class="docutils literal"><span class="pre">-v</span></tt>
+ничего не меняет).</p>
+<p>Начиная с Python 2.6 появилось сокращение для коммандной строки для запуска
+<a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>. Вы можете указать интерпретатору Python запустить модуль doctest
+напрямую из стандартной библиотеки и передать этому модулю имя/имена как аргументы:</p>
+<div class="highlight-python"><div class="highlight"><pre>python -m doctest -v example.py
+</pre></div>
+</div>
+<p>Такая команда импортирует <tt class="file docutils literal"><span class="pre">example.py</span></tt> как отдельный модуль и запустит для
+него <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>. Учтите, что это может работать не корректно, если
+файл является частью пакета и импортирует другие модули из этого пакета.</p>
+<p>Более подробную информацию о <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>, смотрите в разделе <a class="reference internal" href="#doctest-basic-api"><em>Базовый API</em></a>.</p>
+</div>
+<div class="section" id="doctest-simple-testfile">
+<span id="id1"></span><h2>Простое использование: Проверка примеров в текстовом файле<a class="headerlink" href="#doctest-simple-testfile" title="Permalink to this headline">¶</a></h2>
+<p>Другое простое приложение doctest`а - проверка интерактивных примеров
+из текстового файла. Это можно сделать при помощи функции <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">doctest</span>
+<span class="n">doctest</span><span class="o">.</span><span class="n">testfile</span><span class="p">(</span><span class="s">"example.txt"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Этот короткий скрипт выполняется и проверяет все интерактивные примеры Python,
+содержащиеся в файле <tt class="file docutils literal"><span class="pre">example.txt</span></tt>.  Содержимое файла должно соответствовать
+одной большой строке документации; файл не должен содержать программы на Python!
+Например, файл <tt class="file docutils literal"><span class="pre">example.txt</span></tt> может содержать следующее:</p>
+<div class="highlight-python"><div class="highlight"><pre>Модуль ``example``
+======================
+
+Использование ``factorial``
+-------------------
+
+Это пример текстового файла в формате reStructuredText.  Во-первых, импортируем
+``factorial`` из модуля ``example``:
+
+    &gt;&gt;&gt; from example import factorial
+
+Теперь используем его:
+
+    &gt;&gt;&gt; factorial(6)
+    120
+</pre></div>
+</div>
+<p>Запуск <tt class="docutils literal"><span class="pre">doctest.testfile("example.txt")</span></tt> в таком случае найдёт ошибку в документации:</p>
+<div class="highlight-python"><div class="highlight"><pre>File "./example.txt", line 14, in example.txt
+Failed example:
+    factorial(6)
+Expected:
+    120
+Got:
+    720
+</pre></div>
+</div>
+<p>Как и функция <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>, <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> не будет ничего отображать, если
+тесты проходят успешно. Если тест не проходит, тогда он и причина провала будут
+выведены в стандартный вывод в том же формате, что и <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>.</p>
+<p>По умолчанию, <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> ищет файлы в каталоге вызывающего модуля.
+Смотрите раздел <a class="reference internal" href="#doctest-basic-api"><em>Базовый API</em></a>, где описываются аргументы, которые
+можно использовать, чтобы указать модулю, где искать файлы.</p>
+<p>Как и у <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>, “говорливость” <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> может быть задана при помощи
+аргумента командной строки <tt class="docutils literal"><span class="pre">-v</span></tt> или аргумента <em>verbose</em>.</p>
+<p>Начиная с Python 2.6 появилось сокращение для коммандной строки для запуска
+<a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>. Вы можете указать интерпретатору Python запустить модуль doctest
+напрямую из стандартной библиотеки и передать этому модулю имя/имена файла/файлов как аргументы:</p>
+<div class="highlight-python"><div class="highlight"><pre>python -m doctest -v example.txt
+</pre></div>
+</div>
+<p>Так как имя файла не заканчивается на <tt class="file docutils literal"><span class="pre">.py</span></tt>, <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> понимает, что должна быть
+запущена <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>, а не <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>.</p>
+<p>Более подробно <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> описана в разделе <a class="reference internal" href="#doctest-basic-api"><em>Базовый API</em></a>.</p>
+</div>
+<div class="section" id="doctest-how-it-works">
+<span id="id2"></span><h2>Как это работает<a class="headerlink" href="#doctest-how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>Этот раздел детально объясняет, как работает doctest: на какие строки документации
+он смотрит, как он обнаруживает интерактивные примеры, какой контекст исполнения
+он использует, как обрабатывает исключения и какие опции можно использовать для
+управления его поведением. Это та информацию, которая Вам понадобится для написания
+доктестов; информацию о запуске доктестов на этих примерах смотрите выше.</p>
+<div class="section" id="doctest-which-docstrings">
+<span id="id3"></span><h3>Какие строки документации проверяются?<a class="headerlink" href="#doctest-which-docstrings" title="Permalink to this headline">¶</a></h3>
+<p>Ищутся строки документации модуля, всех функций, классов и методов.
+Объекты, импортируемые в модуль не исследуются.</p>
+<p>Кроме того, если существует <tt class="docutils literal"><span class="pre">M.__test__</span></tt> и он “истинен”, то он должен быть словарём,
+и каждый элемент отображает строковое имя на объект функции, класса или строку.
+Ищутся строки документации для этих функций и классов, а строки трактуются как строки
+документации. В выводе ключ <tt class="docutils literal"><span class="pre">K</span></tt> из
+<tt class="docutils literal"><span class="pre">M.__test__</span></tt> будет отображаться так</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;имя M&gt;.__test__.K
+</pre></div>
+</div>
+<p>У всех найденных классов будет произведён рекурсивный поиск строк документации во вложеных
+методах и классах.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Концепция “private name” устарела и больше не документируется.</p>
+</div>
+</div>
+<div class="section" id="doctest-finding-examples">
+<span id="id4"></span><h3>Как распознаются примеры из строк документации?<a class="headerlink" href="#doctest-finding-examples" title="Permalink to this headline">¶</a></h3>
+<p>В большинстве случаев простое копирование-вставка из интерактивной консоли будет работать хорошо,
+но doctest не пытается точно эмулировать оболочку Python`а.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># комментарии игнорируются</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">13</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">"yes"</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">"no"</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">"NO"</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">"NO!!!"</span>
+<span class="gp">...</span>
+<span class="go">no</span>
+<span class="go">NO</span>
+<span class="go">NO!!!</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Весь ожидаемый вывод должен следовать непосредственно за последней строкой с кодом
+(начинающейся с <tt class="docutils literal"><span class="pre">'&gt;&gt;&gt;</span> <span class="pre">'</span></tt> или <tt class="docutils literal"><span class="pre">'...</span> <span class="pre">'</span></tt>), а вслед за выводом (если он есть)
+должна идти строка с <tt class="docutils literal"><span class="pre">'&gt;&gt;&gt;</span> <span class="pre">'</span></tt> или пустая строка.</p>
+<p>The fine print:</p>
+<ul>
+<li><p class="first">Ожидаемый вывод не может содержать строку из пробелов,
+так как такая строка означает конец ожидаемого вывода. Если вывод
+должен содержать пустую строку, поместите <tt class="docutils literal"><span class="pre">&lt;BLANKLINE&gt;</span></tt> в пример
+строки документации там, где должна быть эта строка.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4: </span>Был добавлен <tt class="docutils literal"><span class="pre">&lt;BLANKLINE&gt;</span></tt>; в предыдущих версиях не было никакой
+возможности использовать ожидаемый вывод с пустыми строками.</p>
+</div>
+</li>
+<li><p class="first">Все символы табуляции заменяются пробелами, колонки содержат по 8 столбцов.
+Табуляция в выводе, полученном тестируемым кодом не изменяются. Поскольку
+все табуляции в примере вывода <em>замещаются</em>, значит, если вывод кода содержит
+знаки табуляции, единственный способ пройти тест - использовать опцию
+<a class="reference internal" href="#doctest.NORMALIZE_WHITESPACE" title="doctest.NORMALIZE_WHITESPACE"><tt class="xref py py-const docutils literal"><span class="pre">NORMALIZE_WHITESPACE</span></tt></a> или <a class="reference internal" href="#doctest-directives"><em>директиву</em></a>.
+Или же, тест может быть переписан, чтобы он перехватывал вывод и сравнивал его
+с ожидаемым значением как часть теста. Такая обработка табуляции в исходном коде
+была получена методом проб и ошибок и зарекомендовала себя тоже глючным способом
+(This handling of tabs in the
+source was arrived at through trial and error, and has proven to be the least
+error prone way of handling them.)
+Возможно использовать другой алгоритм для обработки табуляции, если Вы напишете
+свой класс <a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Появилась замена табуляции на пробелы. В предыдущих версиях попытка сохранить
+табуляцию приводила к странным результатам.</p>
+</div>
+</li>
+<li><p class="first">Вывод в stdout захватывается, а вывод в stderr - нет (трассировка исключений
+захватывается по другому).</p>
+</li>
+<li><p class="first">Если Вы продолжаете строку при помощи обратного слеша в интерактивной сессии
+или по какой-либо другой причине используете обратные слеши, Вы должны использовать
+“сырые” строки документации, которые сохранят ваши обратные слеши в первозданном виде:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">r'''Backslashes in a raw docstring: m\n'''</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
+<span class="go">Backslashes in a raw docstring: m\n</span>
+</pre></div>
+</div>
+<p>В противном случае, обратные слеши будут интерпретироваться как часть строки. Например,
+<tt class="docutils literal"><span class="pre">\n</span></tt> из примера выше, будет интерпретироваться как знак начала новой строки.
+Кроме того, Вы можете удвоить каждый бэкслеш (и не использовать “сырые” строки):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">'''Backslashes in a raw docstring: m\\n'''</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
+<span class="go">Backslashes in a raw docstring: m\n</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Стартовый отступ не имеет значения:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="s">"Easy!"</span>
+<span class="go">      &gt;&gt;&gt; import math</span>
+<span class="go">          &gt;&gt;&gt; math.floor(1.9)</span>
+<span class="go">          1.0</span>
+</pre></div>
+</div>
+<p>и от ожидаемого вывода будет отрезано столько пробелов, сколько предшествует <tt class="docutils literal"><span class="pre">'&gt;&gt;&gt;</span> <span class="pre">'</span></tt>
+в строке, начинающей пример.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="doctest-execution-context">
+<span id="id5"></span><h3>Каков контекст выполнения?<a class="headerlink" href="#doctest-execution-context" title="Permalink to this headline">¶</a></h3>
+<p>По умолчанию, каждый раз, когда <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> находит стоки документации, которые
+надо протестировать, он использует <em>shallow copy</em> глобальных переменных модуля <tt class="xref py py-mod docutils literal"><span class="pre">M</span></tt>‘,
+так что запуск теста не изменяет реальные значения переменных модуля, так что один тест
+модуля <tt class="xref py py-mod docutils literal"><span class="pre">M</span></tt> не может оставить за собой “следы”, котоыре могут случайно привести
+к выполнению другого теста. Это означает, что примеры могут спокойно использовать любые
+имена, определённые на верхнем уровне модуля <tt class="xref py py-mod docutils literal"><span class="pre">M</span></tt>, и имена, определённые
+ранее в этой строке документации. Примеры не могут видеть имена, определённые в
+другом примере (строке документации).</p>
+<p>Вы можете принудительно использовать свой собственный словарь как
+контекст выполнения, передав его как аргумент
+<tt class="docutils literal"><span class="pre">globs</span></tt> в <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a> или <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>.</p>
+</div>
+<div class="section" id="doctest-exceptions">
+<span id="id6"></span><h3>Что по поводу исключений?<a class="headerlink" href="#doctest-exceptions" title="Permalink to this headline">¶</a></h3>
+<p>Никаких проблем, при условии, что трассировка - единственный вывод примера:
+просто вставьте трассировку. <a class="footnote-reference" href="#id17" id="id7">[1]</a> Так как трассировка содержит детали, которые
+постоянно изменяются (например, путь к файлу, номер строки), то это тот случай,
+когда doctest прикладывает все усилия, чтобы гибко обработать эту ситуацию.</p>
+<p>Вот простой пример:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">?</span>
+<span class="gr">ValueError</span>: <span class="n">list.remove(x): x not in list</span>
+</pre></div>
+</div>
+<p>Этот пример будет успешен, если возникнет исключение <tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt>,
+с текстом <tt class="docutils literal"><span class="pre">list.remove(x):</span> <span class="pre">x</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">list</span></tt>.</p>
+<p>Ожидаемый вывод исключения должен начинаться с заголовка трассировки, который
+может быть одной из двух строк, находящимся на том же уровне отступа, что и первая
+строка примера:</p>
+<div class="highlight-python"><div class="highlight"><pre>Traceback (most recent call last):
+Traceback (innermost last):
+</pre></div>
+</div>
+<p>За заголовком трассировки может следовать стек трассировки, содержание
+которого игнорируется тестом. Обычно его опускают или копируют из интерактивной оболочки.</p>
+<p>За стеком идёт наиболее интересная часть: строка(строки), содержащие тип исключения
+и информацию о нём. Обычно это самая последняя строка трассировки, но она может занимать
+и несколько строк, если информация об исключении содержит несколько строк:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'multi</span><span class="se">\n</span><span class="s">    line</span><span class="se">\n</span><span class="s">detail'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">?</span>
+<span class="gr">ValueError</span>: <span class="n">multi</span>
+<span class="go">    line</span>
+<span class="go">detail</span>
+</pre></div>
+</div>
+<p>Последние три строчки (начиная с <tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt>) сравниваются с типом
+исключения и информацией о нём, а всё остальное игнорируется.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Предыдущие версии не могли обрабатывать многострочную информацию об исключении.</p>
+</div>
+<p>Лучше всего считается опустить стек трассировки, если только он не добавляет важной информации
+к примеру. Так что последний пример лучше записать так:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'multi</span><span class="se">\n</span><span class="s">    line</span><span class="se">\n</span><span class="s">detail'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">multi</span>
+<span class="go">    line</span>
+<span class="go">detail</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что трассировки трактуются очень по особенному. В частности,
+в переписанном выше примере использование <tt class="docutils literal"><span class="pre">...</span></tt> не зависит от опции
+<a class="reference internal" href="#doctest.ELLIPSIS" title="doctest.ELLIPSIS"><tt class="xref py py-const docutils literal"><span class="pre">ELLIPSIS</span></tt></a>  doctest’а. Вместо многоточия может быть любое количество
+других символов и даже транскрипт скетча Монти Пайтона.</p>
+<p>Вот ещё несколько деталей, которые Вы должны прочитать но не обязаны помнить:</p>
+<ul>
+<li><p class="first">Doctest не может догадаться откуда берётся вывод - из трассировки исключения
+или от инструкции print. Таким образом, пример, который ожидает результат
+<tt class="docutils literal"><span class="pre">ValueError:</span> <span class="pre">42</span> <span class="pre">is</span> <span class="pre">prime</span></tt> будет пройден вне зависимости от того, на самом
+ли деле возникает исключение <tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt> или просто выводится такой текст.
+На практике реальный вывод редко начинается с заголовка трассировки, так что
+это скорее всего не создат проблемы.</p>
+</li>
+<li><p class="first">Каждая строка стека трассировки (если есть) должна иметь отступ больше, чем
+первая строка примера <em>или</em> начинаться с не алфавитно-цифрового символа.
+Первая строка за заголовком трассировки с тем же отступом и начинающаяся с
+алфавитно-цифрового символа считается началом информации об исключении.
+Что соответствует реальной трассировке.</p>
+</li>
+<li><p class="first">Если определена опция <a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL" title="doctest.IGNORE_EXCEPTION_DETAIL"><tt class="xref py py-const docutils literal"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></tt></a> doctest`а,
+всё, что находится за самым левым двоеточием и вся информация о модуле в
+имени исключения игнорируется.</p>
+</li>
+<li><p class="first">Интерактивная оболочка опускает заголовок трассировки для некоторых
+<tt class="xref py py-exc docutils literal"><span class="pre">SyntaxError</span></tt>.  Однако doctest использует заголовок трассировки для
+однозначного определения исполняемой части документации от не исполняемой.
+Так что в тех редких случаях, когда Вам надо протестировать
+<tt class="xref py py-exc docutils literal"><span class="pre">SyntaxError</span></tt>, у которого опущен заголовок трассировки, Вам нужно в ручную
+добавить этот заголовок в ваш тестовый пример.</p>
+</li>
+<li><p class="first">Для некоторых <tt class="xref py py-exc docutils literal"><span class="pre">SyntaxError</span></tt>, Python отображает позицию символа на котором
+возникла ошибка при помощи маркера <tt class="docutils literal"><span class="pre">^</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="mi">1</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>
+    <span class="mi">1</span> <span class="mi">1</span>
+      <span class="o">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+</pre></div>
+</div>
+<p>Так как эта строка находится до обозначения типа исключения, она игнорируется.
+Например, следующий тест тоже будет считаться пройденным успешно, хотя маркер
+<tt class="docutils literal"><span class="pre">^</span></tt> находится в неверной позиции:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="mi">1</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>
+    <span class="mi">1</span> <span class="mi">1</span>
+    <span class="o">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="doctest-options">
+<span id="option-flags-and-directives"></span><span id="id8"></span><h3>Опции/флаги<a class="headerlink" href="#doctest-options" title="Permalink to this headline">¶</a></h3>
+<p>Есть некоторое количество опций, которые определяют поведение doctest’а.
+Символические имена для этих опций определены как константы модуля, которые
+можно совмещать при помощи or и передавать различным функциям. Этим имена
+так же можно использовать в <a class="reference internal" href="#doctest-directives"><em>директивах doctest`а</em></a>.</p>
+<p>Первая группа опций определяет семантику теста, контролирует то, как doctest
+определяет совпадает ли полученный вывод с ожидаемым или нет:</p>
+<dl class="data">
+<dt id="doctest.DONT_ACCEPT_TRUE_FOR_1">
+<tt class="descclassname">doctest.</tt><tt class="descname">DONT_ACCEPT_TRUE_FOR_1</tt><a class="headerlink" href="#doctest.DONT_ACCEPT_TRUE_FOR_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>По умолчанию, если ожидаемый вывод содержит только <tt class="docutils literal"><span class="pre">1</span></tt>, то результат,
+содержащий только <tt class="docutils literal"><span class="pre">1</span></tt> или просто <tt class="docutils literal"><span class="pre">True</span></tt> будет считаться верным, аналогично
+<tt class="docutils literal"><span class="pre">0</span></tt> и <tt class="docutils literal"><span class="pre">False</span></tt>.  Когда используется <a class="reference internal" href="#doctest.DONT_ACCEPT_TRUE_FOR_1" title="doctest.DONT_ACCEPT_TRUE_FOR_1"><tt class="xref py py-const docutils literal"><span class="pre">DONT_ACCEPT_TRUE_FOR_1</span></tt></a>
+такие замены не будут работать. Поведение по умолчанию необходимо потому, что
+Python изменяет возвращаемый тип многих функций с числового на логический и
+такое поведение doctest`a будет работать в этих ситуациях. Эта опция скорее всего
+будет убрана, но не в ближайшее время.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.DONT_ACCEPT_BLANKLINE">
+<tt class="descclassname">doctest.</tt><tt class="descname">DONT_ACCEPT_BLANKLINE</tt><a class="headerlink" href="#doctest.DONT_ACCEPT_BLANKLINE" title="Permalink to this definition">¶</a></dt>
+<dd><p>По умолчанию, если блок вывода содержит только строку <tt class="docutils literal"><span class="pre">&lt;BLANKLINE&gt;</span></tt>,
+тогда эта строка соответствует пустой строке в реальном выводе. Так как
+реальная пустая строка ограничивает ожидаемый вывод, это единственный способ
+указать модулю, что пустая строка должна содержаться в результате теста. Когда
+используется
+<a class="reference internal" href="#doctest.DONT_ACCEPT_BLANKLINE" title="doctest.DONT_ACCEPT_BLANKLINE"><tt class="xref py py-const docutils literal"><span class="pre">DONT_ACCEPT_BLANKLINE</span></tt></a>, такая подстановка не разрешена.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.NORMALIZE_WHITESPACE">
+<tt class="descclassname">doctest.</tt><tt class="descname">NORMALIZE_WHITESPACE</tt><a class="headerlink" href="#doctest.NORMALIZE_WHITESPACE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, все последовательности пробелов и знаков новой строки трактуются одинаково.
+Любая последовательность таких знаков в ожидаемом выводе будет соответствовать любой последовательности
+этих знаков в реальном выводе. По умолчанию пробелы должны совпасть точно.
+<a class="reference internal" href="#doctest.NORMALIZE_WHITESPACE" title="doctest.NORMALIZE_WHITESPACE"><tt class="xref py py-const docutils literal"><span class="pre">NORMALIZE_WHITESPACE</span></tt></a> особенно полезна, когда строка ожидаемого вывода
+очень длинная и Вы хотите разделить её на несколько строк в ожидаемом выводе.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.ELLIPSIS">
+<tt class="descclassname">doctest.</tt><tt class="descname">ELLIPSIS</tt><a class="headerlink" href="#doctest.ELLIPSIS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, знак многоточия (<tt class="docutils literal"><span class="pre">...</span></tt>) в ожидаемом выводе будет
+соответствовать любой подстроке в реальном выводе. Это включает подстроки, которые
+пересекают границу строки и пустые строки, так что лучше использовать это
+для чего-то очевидного. Сложные примеры погут привести к ошибкам типа
+“ой, это совпало с большей частью строки, чем я думал”, как и
+<tt class="docutils literal"><span class="pre">.*</span></tt> в регулярных выражениях.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.IGNORE_EXCEPTION_DETAIL">
+<tt class="descclassname">doctest.</tt><tt class="descname">IGNORE_EXCEPTION_DETAIL</tt><a class="headerlink" href="#doctest.IGNORE_EXCEPTION_DETAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, пример, который ожидает исключения будет считаться
+пройденным при возникновении исключения этого типа, даже если информация об
+исключении отличается. Например, пример, ожидающий <tt class="docutils literal"><span class="pre">ValueError:</span> <span class="pre">42</span></tt>
+будет считаться пройденным при возникновении ислкючения
+<tt class="docutils literal"><span class="pre">ValueError:</span> <span class="pre">3*14</span></tt>, но не пройдёт при исключении
+<tt class="xref py py-exc docutils literal"><span class="pre">TypeError</span></tt>.</p>
+<p>В этом случае так же будет игнорироваться имя модуля, используемое в отчётах
+doctest`a в Python 3. Следовательно оба варианта при использовании этого
+флага будут работать в любой версии Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="n">CustomError</span><span class="p">(</span><span class="s">'message'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">CustomError</span>: <span class="n">message</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="n">CustomError</span><span class="p">(</span><span class="s">'message'</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">my_module.CustomError</span>: <span class="n">message</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что <a class="reference internal" href="#doctest.ELLIPSIS" title="doctest.ELLIPSIS"><tt class="xref py py-const docutils literal"><span class="pre">ELLIPSIS</span></tt></a> можно использовать и для того,
+чтобы игнорировать сообщение исключения, но такой тест может всё равно
+не пройти в зависимости от того, печатается ли это сообщение как часть
+имени исключения или нет. Использование <a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL" title="doctest.IGNORE_EXCEPTION_DETAIL"><tt class="xref py py-const docutils literal"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></tt></a>
+в Python 2.3 - единственный ясный способ написать тест, который
+не обращает внимание на информацию об исключении и выполняется под Python 2.3
+и раньше (эти релизы не поддреживают <a class="reference internal" href="#doctest-directives"><em>директивы doctest`a</em></a> и игнорируют их как комментарии). Например:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s">'moo'</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">?</span>
+<span class="gr">TypeError</span>: <span class="n">object doesn't support item assignment</span>
+</pre></div>
+</div>
+<p>будет выполнен в Python 2.3 и более поздних версиях с этим флагом,
+хотя информация об исключении изменилась начиная с версии 2.4
+и будет содержать “does not” вместо “doesn’t”.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.7: </span><a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL" title="doctest.IGNORE_EXCEPTION_DETAIL"><tt class="xref py py-const docutils literal"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></tt></a> теперь игнорирует любую информацию
+исключения, относящуюся к модулю.</p>
+</div>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.SKIP">
+<tt class="descclassname">doctest.</tt><tt class="descname">SKIP</tt><a class="headerlink" href="#doctest.SKIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, вообще не запускает пример. Это может быть полезно в контексте
+когда примеры используются и как документация и как тесты, и пример должен быть
+включён как часть документации, но не должен проверяться. Например, вывод примера
+может быть случайным, или пример может зависеть от того, что не доступно во время теста.</p>
+<p>Флаг SKIP так же можно использовать чтобы временно “закомментировать” пример.</p>
+</dd></dl>
+
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.5.</span></p>
+</div>
+<dl class="data">
+<dt id="doctest.COMPARISON_FLAGS">
+<tt class="descclassname">doctest.</tt><tt class="descname">COMPARISON_FLAGS</tt><a class="headerlink" href="#doctest.COMPARISON_FLAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Битовая маска, сочетающая все флаги сравнения, приведённые выше.</p>
+</dd></dl>
+
+<p>Вторая группа опций определяет то, как будет сообщено о том, что тест не пройден:</p>
+<dl class="data">
+<dt id="doctest.REPORT_UDIFF">
+<tt class="descclassname">doctest.</tt><tt class="descname">REPORT_UDIFF</tt><a class="headerlink" href="#doctest.REPORT_UDIFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, ошибки, содержащие многострочный реальный и ожидаемый вывод
+отображаются при помощи unified diff.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.REPORT_CDIFF">
+<tt class="descclassname">doctest.</tt><tt class="descname">REPORT_CDIFF</tt><a class="headerlink" href="#doctest.REPORT_CDIFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, ошибки, содержащие многострочный реальный и ожидаемый вывод
+отображаются при помощи context diff.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.REPORT_NDIFF">
+<tt class="descclassname">doctest.</tt><tt class="descname">REPORT_NDIFF</tt><a class="headerlink" href="#doctest.REPORT_NDIFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Когда используется, разница вычисляется при помощи <tt class="docutils literal"><span class="pre">difflib.Differ</span></tt>, используя
+тот же алгоритм, что и популярная утилита <tt class="file docutils literal"><span class="pre">ndiff.py</span></tt>. Это единственный метод,
+который отмечает отличия как внутри строк, так и между строк. Например, если строка
+ожидаемого вывода содержит цифру <tt class="docutils literal"><span class="pre">1</span></tt>, а реальный вывод содержит символ
+<tt class="docutils literal"><span class="pre">l</span></tt>, то строка появится с меткой, указывающий на несовпадающую позицию символа в строке.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.REPORT_ONLY_FIRST_FAILURE">
+<tt class="descclassname">doctest.</tt><tt class="descname">REPORT_ONLY_FIRST_FAILURE</tt><a class="headerlink" href="#doctest.REPORT_ONLY_FIRST_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Если используется, показывает только первый неудачный тест и подавляет вывод всех остальных тестов.
+Это позволяет избежать сообщений об ошибках, которые возникают из-за ошибок в более ранних тестах.
+Но это же может скрыть не прошедшие тесты, которые были провалены вне зависимости от
+первой ошибки. Когда используется <a class="reference internal" href="#doctest.REPORT_ONLY_FIRST_FAILURE" title="doctest.REPORT_ONLY_FIRST_FAILURE"><tt class="xref py py-const docutils literal"><span class="pre">REPORT_ONLY_FIRST_FAILURE</span></tt></a>, остальные примеры
+выполняются и общее число ошибок тоже будет выведено, но сами ошибки будут скрыты.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="doctest.REPORTING_FLAGS">
+<tt class="descclassname">doctest.</tt><tt class="descname">REPORTING_FLAGS</tt><a class="headerlink" href="#doctest.REPORTING_FLAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Битовая маска, включающая все флаги отчётов выше.</p>
+</dd></dl>
+
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4: </span>Были добавлены константы
+<a class="reference internal" href="#doctest.DONT_ACCEPT_BLANKLINE" title="doctest.DONT_ACCEPT_BLANKLINE"><tt class="xref py py-const docutils literal"><span class="pre">DONT_ACCEPT_BLANKLINE</span></tt></a>, <a class="reference internal" href="#doctest.NORMALIZE_WHITESPACE" title="doctest.NORMALIZE_WHITESPACE"><tt class="xref py py-const docutils literal"><span class="pre">NORMALIZE_WHITESPACE</span></tt></a>,
+<a class="reference internal" href="#doctest.ELLIPSIS" title="doctest.ELLIPSIS"><tt class="xref py py-const docutils literal"><span class="pre">ELLIPSIS</span></tt></a>, <a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL" title="doctest.IGNORE_EXCEPTION_DETAIL"><tt class="xref py py-const docutils literal"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></tt></a>, <a class="reference internal" href="#doctest.REPORT_UDIFF" title="doctest.REPORT_UDIFF"><tt class="xref py py-const docutils literal"><span class="pre">REPORT_UDIFF</span></tt></a>,
+<a class="reference internal" href="#doctest.REPORT_CDIFF" title="doctest.REPORT_CDIFF"><tt class="xref py py-const docutils literal"><span class="pre">REPORT_CDIFF</span></tt></a>, <a class="reference internal" href="#doctest.REPORT_NDIFF" title="doctest.REPORT_NDIFF"><tt class="xref py py-const docutils literal"><span class="pre">REPORT_NDIFF</span></tt></a>,
+<a class="reference internal" href="#doctest.REPORT_ONLY_FIRST_FAILURE" title="doctest.REPORT_ONLY_FIRST_FAILURE"><tt class="xref py py-const docutils literal"><span class="pre">REPORT_ONLY_FIRST_FAILURE</span></tt></a>, <a class="reference internal" href="#doctest.COMPARISON_FLAGS" title="doctest.COMPARISON_FLAGS"><tt class="xref py py-const docutils literal"><span class="pre">COMPARISON_FLAGS</span></tt></a> and
+<a class="reference internal" href="#doctest.REPORTING_FLAGS" title="doctest.REPORTING_FLAGS"><tt class="xref py py-const docutils literal"><span class="pre">REPORTING_FLAGS</span></tt></a>.</p>
+</div>
+<p>Кроме того, можно зарегистрировать новый флаг, хотя это и бесполезно
+если только Вы не планируете расширять <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> через подклассы:</p>
+<dl class="function">
+<dt id="doctest.register_optionflag">
+<tt class="descclassname">doctest.</tt><tt class="descname">register_optionflag</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#register_optionflag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.register_optionflag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Создаёт новый флаг с заданным именем и возвращает его числовое значение.
+<a class="reference internal" href="#doctest.register_optionflag" title="doctest.register_optionflag"><tt class="xref py py-func docutils literal"><span class="pre">register_optionflag()</span></tt></a> может быть использована при создании дочерних классов
+<a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a> или <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>, чтобы добавить новые возможности,
+поддерживаемые вашим классом.  <a class="reference internal" href="#doctest.register_optionflag" title="doctest.register_optionflag"><tt class="xref py py-func docutils literal"><span class="pre">register_optionflag()</span></tt></a> всегда должна вызываться
+следующим образом:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">MY_FLAG</span> <span class="o">=</span> <span class="n">register_optionflag</span><span class="p">(</span><span class="s">'MY_FLAG'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="doctest-directives">
+<span id="id9"></span><h3>Директивы<a class="headerlink" href="#doctest-directives" title="Permalink to this headline">¶</a></h3>
+<p>Директивы doctest`a можно использовать, чтобы изменить <a class="reference internal" href="#doctest-options"><em>флаги</em></a> для конкретных примеров. Директивами являются специальные
+комментарии, которые идут за исходным кодом примера:</p>
+<pre><strong id="grammar-token-directive">directive            </strong> ::=  "#" "doctest:" <a class="reference internal" href="#grammar-token-directive_options"><tt class="xref docutils literal"><span class="pre">directive_options</span></tt></a>
+<strong id="grammar-token-directive_options">directive_options    </strong> ::=  <a class="reference internal" href="#grammar-token-directive_option"><tt class="xref docutils literal"><span class="pre">directive_option</span></tt></a> ("," <a class="reference internal" href="#grammar-token-directive_option"><tt class="xref docutils literal"><span class="pre">directive_option</span></tt></a>)\*
+<strong id="grammar-token-directive_option">directive_option     </strong> ::=  <a class="reference internal" href="#grammar-token-on_or_off"><tt class="xref docutils literal"><span class="pre">on_or_off</span></tt></a> <a class="reference internal" href="#grammar-token-directive_option_name"><tt class="xref docutils literal"><span class="pre">directive_option_name</span></tt></a>
+<strong id="grammar-token-on_or_off">on_or_off            </strong> ::=  "+" \| "-"
+<strong id="grammar-token-directive_option_name">directive_option_name</strong> ::=  "DONT_ACCEPT_BLANKLINE" \| "NORMALIZE_WHITESPACE" \| ...
+</pre>
+<p>Не должно быть пробелов между <tt class="docutils literal"><span class="pre">+</span></tt> или <tt class="docutils literal"><span class="pre">-</span></tt> и именем опции директивы.
+Именем может быть имя любого флага, упомянутое выше.</p>
+<p>Директива меняет поведение doctest’а только для одного примера.
+Используйте <tt class="docutils literal"><span class="pre">+</span></tt> чтобы включить нужное поведение или <tt class="docutils literal"><span class="pre">-</span></tt>, чтобы его отключить.</p>
+<p>Например, этот текст успешно выполняется:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> 
+<span class="go">[0,   1,  2,  3,  4,  5,  6,  7,  8,  9,</span>
+<span class="go">10,  11, 12, 13, 14, 15, 16, 17, 18, 19]</span>
+</pre></div>
+</div>
+<p>Без директивы, он не прошёл бы потому что реальный вывод не содержит два пробела
+элементами списка, содержащими одну цифру,и потому что он располагается на одной строке.
+Следующий тест тоже будет успешным, и ему тоже нужна для этого директива:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> 
+<span class="go">[0, 1, ..., 18, 19]</span>
+</pre></div>
+</div>
+<p>Можно использовать несколько директив в одной строке, разделив их запятыми:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> 
+<span class="go">[0,    1, ...,   18,    19]</span>
+</pre></div>
+</div>
+<p>Если несколько директив используется для одного примера, то они комбинируются:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> 
+<span class="gp">... </span>                
+<span class="go">[0,    1, ...,   18,    19]</span>
+</pre></div>
+</div>
+<p>Как показывает предыдущий пример, Вы можете добавить строку <tt class="docutils literal"><span class="pre">...</span></tt>, которая содержит
+только директивы, в ваш пример. Это может быть полезным в случае, если пример слишком
+длинный, чтобы директивы уместились на той же строке:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span> <span class="o">+</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">[0, ..., 4, 10, ..., 19, 30, ..., 39, 50, ..., 59]</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что так как по умолчанию все опции отключены и директивы
+применяются только к тому примеру, где они указаны, полезным бывает лишь включение
+опции (при помощи <tt class="docutils literal"><span class="pre">+</span></tt> в директиве).  Однако флаги можно передать и
+функциям, которые запускают тесты, чтобы изменить их поведение. В этих
+случая может быть полезным отключение опции при помощи <tt class="docutils literal"><span class="pre">-</span></tt>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4: </span>Была добавлена поддержка директив doctest`a.</p>
+</div>
+</div>
+<div class="section" id="doctest-warnings">
+<span id="id10"></span><h3>Предупреждения<a class="headerlink" href="#doctest-warnings" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> очень строго относится к тому, чтобы реальный вывод совпадал
+с ожидаемым. Если не совпадает даже один символ - тест всё равно будет провален.
+Возможно, это приведёт Вас к некоторым открытиям в том, что гарантируется, а что
+нет в выводе Python. Например когда Вы выводите словарь, Python не гарантирует,
+что пары ключ-значение будут напечатаны в каком-то определённом порядке, так что
+тест вроде:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">()</span>
+<span class="go">{"Hermione": "hippogryph", "Harry": "broomstick"}</span>
+</pre></div>
+</div>
+<p>опасен! Один из способов обойти это:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">()</span> <span class="o">==</span> <span class="p">{</span><span class="s">"Hermione"</span><span class="p">:</span> <span class="s">"hippogryph"</span><span class="p">,</span> <span class="s">"Harry"</span><span class="p">:</span> <span class="s">"broomstick"</span><span class="p">}</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Другой:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">[('Harry', 'broomstick'), ('Hermione', 'hippogryph')]</span>
+</pre></div>
+</div>
+<p>Есть и другие, но Вы поняли.</p>
+<p>Ещё одна плохая идея - сравнивать информацию об адресе объекта, как:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c"># будет периодически неуспешным</span>
+<span class="go">7948648</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span> <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">()</span>   <span class="c"># по умолчанию repr() отобразит адрес объекта</span>
+<span class="go">&lt;__main__.C instance at 0x00AC18F0&gt;</span>
+</pre></div>
+</div>
+<p>Директива <a class="reference internal" href="#doctest.ELLIPSIS" title="doctest.ELLIPSIS"><tt class="xref py py-const docutils literal"><span class="pre">ELLIPSIS</span></tt></a> поможет Вам с последним примером:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">()</span> 
+<span class="go">&lt;__main__.C instance at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Числа с плавающей точкиой тоже являются причиной небольших отличий на разных
+платформах, так как  Python обращается к библиотеке С платформы для
+форматирования этих чисел, а эти библиотеки очень отличаются в этом вопросе:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">1.</span><span class="o">/</span><span class="mi">7</span>  <span class="c"># опасно</span>
+<span class="go">0.14285714285714285</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">7</span> <span class="c"># безопаснее</span>
+<span class="go">0.142857142857</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">round</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c"># ещё лучше</span>
+<span class="go">0.142857</span>
+</pre></div>
+</div>
+<p>Числа в виде <tt class="docutils literal"><span class="pre">I/2.**J</span></tt> безопасны на всех платформах и я часто придумывают
+тесты чтобы получитьь число в такой форме:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">3.</span><span class="o">/</span><span class="mi">4</span>  <span class="c"># очень безопасно</span>
+<span class="go">0.75</span>
+</pre></div>
+</div>
+<p>Кроме того, людям проще воспринимать простые дроби и это поможет Вам лучше написать
+документацию.</p>
+</div>
+</div>
+<div class="section" id="api">
+<span id="doctest-basic-api"></span><h2>Базовый API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>Функции <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a> и <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> предоставляют простой интерфейс к
+doctest, которого должно быть достаточно для большинства случаев. Для менее формального
+знакомства с этими функциями смотрите разделы <a class="reference internal" href="#doctest-simple-testmod"><em>Простое использование: Проверка примеров в Docstrings</em></a>
+и <a class="reference internal" href="#doctest-simple-testfile"><em>Простое использование: Проверка примеров в текстовом файле</em></a>.</p>
+<dl class="function">
+<dt id="doctest.testfile">
+<tt class="descclassname">doctest.</tt><tt class="descname">testfile</tt><big>(</big><em>filename[,
+ module_relative][, name][, package][, globs][, verbose][, report][, 
+optionflags][, extraglobs][, raise_on_error][, parser][, encoding]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#testfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.testfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Все аргументы, кроме <em>filename</em> не являются обязательными и должны быть
+указаны как именованные аргументы.</p>
+<p>Запускает тесты в файле <em>filename</em>.  Возвращает <tt class="docutils literal"><span class="pre">(failure_count,</span>
+<span class="pre">test_count)</span></tt>.</p>
+<p>Не обязательный аргумент <em>module_relative</em> определяет, как должно быть
+интерперетировано имя файла:</p>
+<ul class="simple">
+<li>Если <em>module_relative</em> <tt class="docutils literal"><span class="pre">True</span></tt> (по умолчанию), тогда <em>filename</em> определяет
+OС-независимый относительный путь. По умолчанию, путь берётся от каталога
+вызывающего модуля, но если определён аргумент <em>package</em>, тогда путь берётся
+относительно этого пакета. Чтобы обеспечить независимость от ОС <em>filename</em>
+должно использовать в строке пути символ <tt class="docutils literal"><span class="pre">/</span></tt>, и он может быть не абсолютным
+(то есть, не начинаться с <tt class="docutils literal"><span class="pre">/</span></tt>).</li>
+<li>Если <em>module_relative</em> <tt class="docutils literal"><span class="pre">False</span></tt>, тогда <em>filename</em> определяет зависящий от ОС
+путь. Он может быть абсолютным или относительным; относительный путь разрешается
+относительно текущего рабочего каталога.</li>
+</ul>
+<p>Не обязательный аргумент <em>name</em> указывает имя теста; по умаолчанию, или если
+равен <tt class="docutils literal"><span class="pre">None</span></tt>, используется <tt class="docutils literal"><span class="pre">os.path.basename(filename)</span></tt>.</p>
+<p>Не обязательный аргумент <em>package</em> является пакетом Python или именем пакета Python,
+чей каталог надо использовать как базовый каталог для зависящих от модуля имён файлов.
+Если пакет не определён, то используется каталог вызывающего модуля. Ошибкой является
+указывать  <em>package</em>, если <em>module_relative</em> <tt class="docutils literal"><span class="pre">False</span></tt>.</p>
+<p>Не обязательный аргумент <em>globs</em> передаёт словарь, который будет
+использоваться для глобальных переменных при выполнении теста. Новая
+поверхностная копия этого словаря создаётся для doctest, так что тесты
+начинваются с “чистого” состояния. По умолчанию, или если аргумент равен
+<tt class="docutils literal"><span class="pre">None</span></tt>, используется новый пустой словарь.</p>
+<p>Не обязательный аргумент <em>extraglobs</em> содержит словарь, который
+сливается с глобальным словарём, используемым для выполнения тестов.
+Это работает как <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict.update" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">dict.update()</span></tt></a>:  если <em>globs</em> и <em>extraglobs</em>
+имеют общие ключи, то в итоговом словаре будет значение из <em>extraglobs</em>.
+По умолчанию, или если значение аргумента равно <tt class="docutils literal"><span class="pre">None</span></tt>, никаких
+дополнительных значений не используется. Это ещё одна возможность
+настройки теста. Например, тест может быть написан для базового класса,
+используя имя класса по умолчанию, а затем его можно использовать для
+любого другого количества подклассов, просто передав словарь
+<em>extraglobs</em>, который отображает имя по умолчанию на тот подкласс,
+который надо проверить.</p>
+<p>Не обязательный аргумент <em>verbose</em> приводит к выводу кучи информации,
+если он истинен, или выводятся только сообщения об ошибках, если ложен,
+не задан или равен <tt class="docutils literal"><span class="pre">None</span></tt>, он будет истинен только если <tt class="docutils literal"><span class="pre">'-v'</span></tt>
+присутствует в <tt class="docutils literal"><span class="pre">sys.argv</span></tt>.</p>
+<p>Не обязательный аргумент <em>report</em> выводит итог всех тестов, если
+истинен, иначе по завершению тестов не будет напечатано ничего. В
+“словоохотливом” режиме итог будет детальным, иначе - очень коротким
+(или пустым, если все тесты пройдены).</p>
+<p>Не обязательный аргумент <em>optionflags</em> складывает все остальные
+флаги. Смотрите раздел <a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>.</p>
+<p>Не обязательный аргумент <em>raise_on_error</em> по умолчанию ложный.
+Если он истинный, то вызывается исключение при первой ошибке
+в тесте или неожиданном исключении. Это позволяет посмертно отладить
+ошибки. Поведение по умолчанию - продолжать выполнение тестов.</p>
+<p>Не обязательный аргумент <em>parser</em> определяет <a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a>
+(или подкласс), который будет использован для извлечения тестов из
+файлов. По умолчанию - обычный парсер (то есть, <tt class="docutils literal"><span class="pre">DocTestParser()</span></tt>).</p>
+<p>Не обязательный аргумент <em>encoding</em> определяет кодировку, которая должна
+быть использована для перобразования файла в юникод.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.5: </span>Был добавлен парамент <em>encoding</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="doctest.testmod">
+<tt class="descclassname">doctest.</tt><tt class="descname">testmod</tt><big>(</big><em>[m][, name][, globs][, verbose][, report][, optionflags][, extraglobs][, raise_on_error][, exclude_empty]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#testmod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.testmod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Все аргументы не обязательные, и все, за исключением <em>m</em>, должны
+передаваться как именованные аргументы.</p>
+<p>Проверяет примеры в строках документации в функциях и классах,
+достигнутых из модуля <em>m</em> (или модуля <a class="reference external" href="http://docs.python.org/library/__main__.html#module-__main__" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">__main__</span></tt></a>, если <em>m</em> не
+указан или <tt class="docutils literal"><span class="pre">None</span></tt>), начиная с <tt class="docutils literal"><span class="pre">m.__doc__</span></tt>.</p>
+<p>Кроме того, проверяет примеры, доступные из словаря <tt class="docutils literal"><span class="pre">m.__test__</span></tt>,
+если он существует и не равен <tt class="docutils literal"><span class="pre">None</span></tt>.  <tt class="docutils literal"><span class="pre">m.__test__</span></tt> отражает
+имена (строки) на функции, классы или строки; в функциях и классах
+ищутся тесты, строки рассматриваются напрямую как строки документации.</p>
+<p>Рассматриваются только строки документации, принадлежащие объектам из
+модуля <em>m</em>.</p>
+<p>Возвращает <tt class="docutils literal"><span class="pre">(failure_count,</span> <span class="pre">test_count)</span></tt>.</p>
+<p>Не обязательный аргумент <em>name</em> содержит имя модуля; по умолчанию, или
+если равен <tt class="docutils literal"><span class="pre">None</span></tt>, используется <tt class="docutils literal"><span class="pre">m.__name__</span></tt>.</p>
+<p>Не обязательный аргумент <em>exclude_empty</em> по умолчанию ложный. Если
+истинен, то объект, для которого не найдены строки документации
+исключается из рассмотрения. Значение по умолчанию является “костылём”
+для совместимости, так что код, использующий
+<tt class="xref py py-meth docutils literal"><span class="pre">doctest.master.summarize()</span></tt> в месте с <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a> продолжает
+создавать вывод для объектов без тестов. Для нового класса
+<a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a> аргумент <em>exclude_empty</em> по умолчанию истинен.</p>
+<p>Не обязательные аргументы <em>extraglobs</em>, <em>verbose</em>, <em>report</em>,
+<em>optionflags</em>, <em>raise_on_error</em> и <em>globs</em> аналогичны этим же аргументам
+для функции <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>, за исключением того, что <em>globs</em> по
+умолчанию равен <tt class="docutils literal"><span class="pre">m.__dict__</span></tt>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.3: </span>Был добавлен парамент <em>optionflags</em>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Были добавлены параметры <em>extraglobs</em>, <em>raise_on_error</em> и
+<em>exclude_empty</em>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.5: </span>Не обязательный аргумент <em>isprivate</em>, не рекомендуемый с 2.4,
+был удалён.</p>
+</div>
+</dd></dl>
+
+<p>Кроме того, есть ещё функция для запуска doctest`ов, ассоциированных
+с отедльным объектом. Эта функция присутствует для обратной совместимости.
+Запрещать её не планируется, но она используется крайне редко:</p>
+<dl class="function">
+<dt id="doctest.run_docstring_examples">
+<tt class="descclassname">doctest.</tt><tt class="descname">run_docstring_examples</tt><big>(</big><em>f, globs[, verbose][, name][, compileflags][, optionflags]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#run_docstring_examples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.run_docstring_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Запускает тесты, ассоциированные с объектом <em>f</em>; например, <em>f</em> может
+быть модулем, функцией или классом.</p>
+<p>В качестве контекста выполнения используется поверхностная копия
+аргумента <em>globs</em>.</p>
+<p>Не обязательный аргумент <em>name</em> используется в сообщениях об ошибках
+и по умолчанию равно <tt class="docutils literal"><span class="pre">"NoName"</span></tt>.</p>
+<p>Если не обязательный аргумент <em>verbose</em> истинен, вывод будет, даже если
+никаких ошибок не было. По умолчанию вывод будет только если в тестах
+возникают ошибки.</p>
+<p>Не обязательный аргумент <em>compileflags</em> даёт набор флагов, которые
+должны использоваться компилятором Python для выполнения тестов. По
+умолчанию, или если равен <tt class="docutils literal"><span class="pre">None</span></tt>, флаги определяются в соответствии
+с набором будущих возможностей, обнаруженных в <em>globs</em> (flags are
+deduced corresponding to the set of future features found in <em>globs</em>).</p>
+<p>Не обязательный аргумент <em>optionflags</em> работает так же, как в функции
+<a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="unittest-api">
+<span id="doctest-unittest-api"></span><h2>Unittest API<a class="headerlink" href="#unittest-api" title="Permalink to this headline">¶</a></h2>
+<p>По мере того, как ваша коллекция модулей с doctest`ами будет расти, Вы
+захотите получить возможность запускать все эти тесты систематически. До
+Python 2.4, <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> имел плохо документированный класс
+<tt class="xref py py-class docutils literal"><span class="pre">Tester</span></tt>, который предоставлял устаревший способ скомбинировать
+тесты из нескольких модулей. <tt class="xref py py-class docutils literal"><span class="pre">Tester</span></tt> был слаб и более серьёзные
+фреймворки для тестирования построине на модуле <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>, который
+даёт более гибкие способы скомбинировать тесты из нескольких источников.
+Так, в Python 2.4, <tt class="xref py py-class docutils literal"><span class="pre">Tester</span></tt> <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>‘а уже не рекомендуется
+использовать и <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> предоставляет две функции, которые можно
+использовать для создания набора тестов <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> из модулей и
+текстовых файлов, содержащий строки документации. Для итеграции с
+поисковщиком тестов <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>, добавьте функцию <tt class="xref py py-func docutils literal"><span class="pre">load_tests()</span></tt>
+в ваш тестовый модуль:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">import</span> <span class="nn">doctest</span>
+<span class="kn">import</span> <span class="nn">my_module_with_doctests</span>
+
+<span class="k">def</span> <span class="nf">load_tests</span><span class="p">(</span><span class="n">loader</span><span class="p">,</span> <span class="n">tests</span><span class="p">,</span> <span class="n">ignore</span><span class="p">):</span>
+    <span class="n">tests</span><span class="o">.</span><span class="n">addTests</span><span class="p">(</span><span class="n">doctest</span><span class="o">.</span><span class="n">DocTestSuite</span><span class="p">(</span><span class="n">my_module_with_doctests</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tests</span>
+</pre></div>
+</div>
+<p>Есть две основные функции для создания экземлпяров
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> из текстовых файлов и модулей с doctest`ами:</p>
+<dl class="function">
+<dt>
+<tt class="descname">DocFileSuite(*paths, [module_relative][, package][, setUp]</tt></dt>
+<dd></dd></dl>
+
+<p>[, tearDown][, globs][, optionflags][, parser][, encoding])</p>
+<blockquote>
+<div><p>Преобразует тест doctest из одного и более текстового файла в
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a>.</p>
+<p>Возвращаемый <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> должен быть запущен фреймворком
+unittest и выполняет интерактивные примеры в каждом файле. Если тест
+в каком-либо файле не проходит, тогда полученный unit test провален и
+возбуждается <tt class="xref py py-exc docutils literal"><span class="pre">failureException</span></tt>, показывающее имя файла, содержащее
+тест и (иногда) номер строки.</p>
+<p>Принимает один или более путей (в виде строк) к текстовым файлам,
+которые надо проверить.</p>
+<p>Опции могут быть указаны как именованные аргументы:</p>
+<p>Не обязательный аргумент <em>module_relative</em> определяет то, как имя
+файла в <em>paths</em> должно интерпретироваться:</p>
+<ul class="simple">
+<li>Если <em>module_relative</em> <tt class="docutils literal"><span class="pre">True</span></tt> (по умолчанию), тогда <em>filename</em>
+определяет OС-независимый относительный путь. По умолчанию, путь
+берётся от каталога вызывающего модуля, но если определён аргумент
+<em>package</em>, тогда путь берётся относительно этого пакета. Чтобы
+обеспечить независимость от ОС <em>filename</em> должно использовать в строке
+пути символ <tt class="docutils literal"><span class="pre">/</span></tt>, и он может быть не абсолютным (то есть, не
+начинаться с <tt class="docutils literal"><span class="pre">/</span></tt>).</li>
+<li>Если <em>module_relative</em> <tt class="docutils literal"><span class="pre">False</span></tt>, тогда <em>filename</em> определяет
+зависящий от ОС путь. Он может быть абсолютным или относительным;
+относительный путь разрешается относительно текущего рабочего каталога.</li>
+</ul>
+<p>Не обязательный аргумент <em>package</em> является пакетом Python или именем
+пакета Python, чей каталог надо использовать как базовый каталог для
+зависящих от модуля имён файлов в <em>paths</em>. Если пакет не определён, то
+используется каталог вызывающего модуля. Ошибкой является указывать
+<em>package</em>, если <em>module_relative</em> <tt class="docutils literal"><span class="pre">False</span></tt>.</p>
+<p>Не обязательный аргумент <em>setUp</em> определяет настроечную функцию
+для каждого набора тестов. Она вызывается перед запуском тестов в каждом
+файле. Функция <em>setUp</em> будет передана объекту <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>. Эта
+функция имеет доступ к глобальным переменным теста через атрибут <em>globs</em>
+выполняемого теста.</p>
+<p>Не обязательный аргумент <em>tearDown</em> определяет “очищающую” функцию
+для набора тестов. Она вызывается после запуска тестов в каждом файле.
+Функция <em>tearDown</em> будет передана объекту <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>. Эта
+функция имеет доступ к глобальным переменным теста через атрибут <em>globs</em>
+выполняемого теста.</p>
+<p>Не обязательный аргумент <em>globs</em> является словарём, содержащим начальные
+глобальные значения переменных для теста. Новая копия этого словаря
+создаётся для каждого теста. По умолчанию <em>globs</em> является пустым
+словарём.</p>
+<p>Не обязательный аргумент <em>optionflags</em> определяет опции по умолчанию для
+теста, создаваемый при помощи “или” для отдельных опций. Смотрите
+раздел <a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>. Смотрите ниже описание функции
+<a class="reference internal" href="#doctest.set_unittest_reportflags" title="doctest.set_unittest_reportflags"><tt class="xref py py-func docutils literal"><span class="pre">set_unittest_reportflags()</span></tt></a>, где описан лучший способ задания опций
+оповещения.</p>
+<p>Не обязательный аргумент <em>parser</em> определяет <a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a> (или
+подкласс), который должен быть использован для извлечения тестов из
+файлов. По умолчанию это обычный парсер (то есть, <tt class="docutils literal"><span class="pre">DocTestParser()</span></tt>).</p>
+<p>Не обязательный аргумент <em>encoding</em> определяет кодировку, которая
+должна быть использована для преобразования файла в юникод.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.5: </span>Был добавлен <tt class="docutils literal"><span class="pre">__file__</span></tt> к глобальным переменным, предоставляемым
+doctest`ам, загружаемым из текстового файла при помощи
+<tt class="xref py py-func docutils literal"><span class="pre">DocFileSuite()</span></tt>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.5: </span>Был добавлен параметр <em>encoding</em>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>В отличие от <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a> и <a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a>, эта функция
+возбуждает исключение <tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt>, если <em>module</em> не содержит
+строк документации. Вы можете избежать этого исключения, передав
+экземпляр <a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a> как аргумент <em>test_finder</em> с
+именованным аргументом  <em>exclude_empty</em> установленным в <tt class="docutils literal"><span class="pre">False</span></tt>:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">finder</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">DocTestFinder</span><span class="p">(</span><span class="n">exclude_empty</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">suite</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">DocTestSuite</span><span class="p">(</span><span class="n">test_finder</span><span class="o">=</span><span class="n">finder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<dl class="function">
+<dt>
+<tt class="descname">DocTestSuite([module][, globs][, extraglobs][, test_finder]</tt></dt>
+<dd></dd></dl>
+
+<p>[, setUp][, tearDown][, checker])</p>
+<blockquote>
+<div><p>Преобразует тесты для модуля в <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a>.</p>
+<p>Возаращаемый <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> должен быть запущен под
+фреймворком unittest и он выполнит каждый тест в модуле. Если какой-либо
+тест не проходит, тогда синтезированный тест тоже не пройдёт и будет
+вызвано ислкючение <tt class="xref py py-exc docutils literal"><span class="pre">failureException</span></tt>, которое сообщит имя файла,
+содержащего тест и (иногда приблизительно) номер строки.</p>
+<p>Не обязательный аргумент <em>module</em> предоставляет модуль, который нужно
+протестировать. Это может быть как объектом модуля, так и имя модуля
+(даже с точками). Если не определено, используется модуль, вызывашинй
+эту функцию.</p>
+<p>Не обязательный аргумент <em>globs</em> является словарём, содержащим начальные
+глобальные значения переменных для теста. Новая копия этого словаря
+создаётся для каждого теста. По умолчанию <em>globs</em> является пустым
+словарём.</p>
+<p>Не обязательный аргумент <em>extraglobs</em> определяет дополнительные
+глобальные переменные, которые сливаются с <em>globs</em>.  По умолчанию никаких
+дополнитеьльных переменных не используется.</p>
+<p>Не обязательный аргумент <em>test_finder</em> является объектом
+<a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a> (или drop-in replacement), который будет
+использован для извлечения теста из модуля.</p>
+<p>Не обязательные аргументы <em>setUp</em>, <em>tearDown</em>, и <em>optionflags</em> аналогичны
+этим аргументам в функции <tt class="xref py py-func docutils literal"><span class="pre">DocFileSuite()</span></tt>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.3.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Были добавлены параметры <em>globs</em>, <em>extraglobs</em>, <em>test_finder</em>,
+<em>setUp</em>, <em>tearDown</em> и <em>optionflags</em>; эта функция теперь использует
+тот же самый механизм поиска, что и <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><tt class="xref py py-func docutils literal"><span class="pre">testmod()</span></tt></a>.</p>
+</div>
+</div></blockquote>
+<p>Под “капотом” <tt class="xref py py-func docutils literal"><span class="pre">DocTestSuite()</span></tt> создаёт <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> из
+экземпляров <tt class="xref py py-class docutils literal"><span class="pre">doctest.DocTestCase</span></tt>, а <tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt> является
+дочерним классом <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestCase" title="unittest.TestCase"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestCase</span></tt></a>. <tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt> не
+задокументирован тут (это внутренее устройство модуля), но изучение его
+кода может ответить на некоторые вопросы по поводу подробностей
+интеграции модуля <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>.</p>
+<p>Похожим образом <tt class="xref py py-func docutils literal"><span class="pre">DocFileSuite()</span></tt> создаёт <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> из
+экземпляров <tt class="xref py py-class docutils literal"><span class="pre">doctest.DocFileCase</span></tt>, а <tt class="xref py py-class docutils literal"><span class="pre">DocFileCase</span></tt> является
+подклассом <tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt>.</p>
+<p>Таким образом оба способа создания <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestSuite" title="unittest.TestSuite"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestSuite</span></tt></a> запускают
+экземпляр <tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt>. Это важно по одной причине: когда Вы
+запускаете функции модуля <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>, Вы можете контролировать опции
+<a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> непосредственно, передав флаги функциям модуля
+<a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>. Однако, если Вы пишете фреймворк <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>,
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> полностью контролирует как и когда тест запускается. Автор
+фрейморвка обычно хочет контролировать опции оповещения <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>
+(возможно, например, определяемые опциями командной строки), но тут нет
+никакого способа передать опции через <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> в исполнитель
+тестов <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>.</p>
+<p>По этой причине <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> так же поддерживает флаги оповещения
+<a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> предназначенные для поддержки <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>, при помощи
+этих функций:</p>
+<dl class="function">
+<dt id="doctest.set_unittest_reportflags">
+<tt class="descclassname">doctest.</tt><tt class="descname">set_unittest_reportflags</tt><big>(</big><em>flags</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#set_unittest_reportflags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.set_unittest_reportflags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Задаёт флаги <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> для оповещения.</p>
+<p>Аргумент <em>flags</em> соеденияет при помощи “или” флаги опций. Смотрите
+раздел <a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>. Можно использовать только флаги
+оповещения.</p>
+<p>Эта настройка глобальна для всего модуля и влияет на все следующие
+тесты, которые будут запущены модулем <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>:  метод
+<tt class="xref py py-meth docutils literal"><span class="pre">runTest()</span></tt> класса <tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt> смотрит на флаги опций,
+определённые для набора тестов, когда создаётся экземпляр
+<tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt>. Если флаги оповещений не были определены (что
+является обычным случаем), флаги оповещения <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>‘а
+для <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> складываются при помощи “или” в флаги опций и они
+передаются в создаваемый экземпляр <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>, который будет
+запускать тесты. Если флаги были определены при создании класса
+<tt class="xref py py-class docutils literal"><span class="pre">DocTestCase</span></tt>, флаги оповещения <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a>‘а для
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> игнорируются.</p>
+<p>Значение флагов оповещения <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>, которое оно было до вызова
+функции, возвращается функцией.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="doctest-advanced-api">
+<span id="id11"></span><h2>Продвинутый API<a class="headerlink" href="#doctest-advanced-api" title="Permalink to this headline">¶</a></h2>
+<p>Базовый API является просто оболочкой, позволяющей проще использовать
+doctest. Он достаточно гибкий и должен удволетворять большую часть
+потребностей пользователей. Однако, если Вам нужен более детальный контроль
+над тестированием или Вы хотите расширить возможности doctest’а, тогда Вы
+должны использовать продвинутый API.</p>
+<p>Продвинутый API работает вокруг двух классов-контейнеров, которые
+используются для хранения интерактивных примеров, извлечённых из строк
+документации:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>: одиночное <a class="reference internal" href="http://python-lab.ru/glossary.html#term-3"><em class="xref std std-term">выражение</em></a> Python`а, в паре с его
+ожидаемым результатом.</li>
+<li><a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>: набор <a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>ов, обычно извлечённых из
+единичной строки документации или текстового файла.</li>
+</ul>
+<p>Дополнительные классы определены для поиска, парсинга, запуска и проверки
+тестов:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a>: Находит все строки документации в заданом
+модуле и использует <a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a> для создания <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>
+из каждой строки документации, которая содержит интерактивные примеры.</li>
+<li><a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a>: Создаёт объект <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> из строки (такой,
+как строка документации объекта).</li>
+<li><a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>: выполняет тесты в <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>, и использует
+<a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a> для проверки их вывода.</li>
+<li><a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a>: Сравнивает актуальный вывод из теста с ожидаемым
+выводом и определяет, совпадают ли они.</li>
+</ul>
+<p>Отношения между этими классами выражено в следующей диаграмме:</p>
+<div class="highlight-python"><div class="highlight"><pre>                            list of:
++------+                   +---------+
+|module| --DocTestFinder-&gt; | DocTest | --DocTestRunner-&gt; results
++------+    |        ^     +---------+     |       ^    (printed)
+            |        |     | Example |     |       |
+            v        |     |   ...   |     v       |
+           DocTestParser   | Example |   OutputChecker
+                           +---------+
+</pre></div>
+</div>
+<div class="section" id="doctest">
+<span id="doctest-doctest"></span><h3>Объекты DocTest<a class="headerlink" href="#doctest" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.DocTest">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">DocTest</tt><big>(</big><em>examples</em>, <em>globs</em>, <em>name</em>, <em>filename</em>, <em>lineno</em>, <em>docstring</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Набор тестов doctest, которые должны быть запущены в одном пространстве
+имён. Аргументы конструктора используются для инициализации атрибутов
+с теми же именами.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> определяет следующие атрибуты. Они инициализируются
+конструктором и не должны изменяться напрямую.</p>
+<dl class="attribute">
+<dt id="doctest.DocTest.examples">
+<tt class="descname">examples</tt><a class="headerlink" href="#doctest.DocTest.examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Список объектов <a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>, содержащих примеры интерактивных
+сеансов, которые должны быть проверены этим тестом.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTest.globs">
+<tt class="descname">globs</tt><a class="headerlink" href="#doctest.DocTest.globs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Пространство имён (aka globals), в котором должны быть выполнены
+тесты. Это словарь, отображающий имена на значения. Все изменения,
+сделанные в этом пространстве имён тестами (например, добавление
+новых переменных) будут отражены в <a class="reference internal" href="#doctest.DocTest.globs" title="doctest.DocTest.globs"><tt class="xref py py-attr docutils literal"><span class="pre">globs</span></tt></a> после завершения
+теста.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTest.name">
+<tt class="descname">name</tt><a class="headerlink" href="#doctest.DocTest.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Строковое имя, идентифицирующее <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>. Обычно это имя
+объекта или файла, откуда был извлечён тест.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTest.filename">
+<tt class="descname">filename</tt><a class="headerlink" href="#doctest.DocTest.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Имя файла, откуда был извлечён этот <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> или <tt class="docutils literal"><span class="pre">None</span></tt>,
+если оно не известно или если <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> не был получен из
+файла.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTest.lineno">
+<tt class="descname">lineno</tt><a class="headerlink" href="#doctest.DocTest.lineno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Номер строки в <a class="reference internal" href="#doctest.DocTest.filename" title="doctest.DocTest.filename"><tt class="xref py py-attr docutils literal"><span class="pre">filename</span></tt></a>, где начинается <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> или
+<tt class="docutils literal"><span class="pre">None</span></tt>, если номер строки не доступен. Отсчёт начинается с 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTest.docstring">
+<tt class="descname">docstring</tt><a class="headerlink" href="#doctest.DocTest.docstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Строка, из которой был извлечён тест или ‘None’, если строка не
+доступна, или тест не был получен из строки.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<span id="doctest-example"></span><h3>Объекты Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.Example">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">Example</tt><big>(</big><em>source, want[, exc_msg][, lineno][, indent][, options]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#Example"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.Example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Один интерактивный пример, состоящий из выражения Python и его
+ожидаемого вывода. Аргументы конструктора используются для инициализации атрибутов
+с теми же именами.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a> определяет следующие атрибуты. Они инициализируются
+конструктором и не должны изменяться напрямую.</p>
+<dl class="attribute">
+<dt id="doctest.Example.source">
+<tt class="descname">source</tt><a class="headerlink" href="#doctest.Example.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Строка, содержащая исходный код примера. Этот исходный код состоит
+из одного выражения Python и всегда заканчивается новой строкой.
+Переход на новую строку конструктор добавляет автоматически.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.Example.want">
+<tt class="descname">want</tt><a class="headerlink" href="#doctest.Example.want" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ожидаемый вывод из исходного кода выполняемого примера (или в
+stdout, или трассировка в случае исключения). <a class="reference internal" href="#doctest.Example.want" title="doctest.Example.want"><tt class="xref py py-attr docutils literal"><span class="pre">want</span></tt></a> завершается
+новой строкой, а если его вообще нет, то строка будет пустой.
+Конструктор добавляет переход на новую строку при необходимости.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.Example.exc_msg">
+<tt class="descname">exc_msg</tt><a class="headerlink" href="#doctest.Example.exc_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Сообщение об ошибке, генерируемое примером, если он должен вызывать
+исключение, или <tt class="docutils literal"><span class="pre">None</span></tt>, если оно не ожидается. Сообщение об ошибке
+сравнивается с возвращаемым значением функции
+<a class="reference external" href="http://docs.python.org/library/traceback.html#traceback.format_exception_only" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">traceback.format_exception_only()</span></tt></a>.  :attr:<a href="#id12"><span class="problematic" id="id13">`</span></a>exc_msg`завершается
+новой строкой, а если его вообще нет, то строка будет пустой.
+Конструктор добавляет переход на новую строку при необходимости.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.Example.lineno">
+<tt class="descname">lineno</tt><a class="headerlink" href="#doctest.Example.lineno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Номер строки в строке, содержащей пример, с которой начинается пример.
+Нумерация идёт с 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.Example.indent">
+<tt class="descname">indent</tt><a class="headerlink" href="#doctest.Example.indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Отступ примера в содержащей его строке, то есть количество пробелов,
+которые находятся перед первым приглашением примера.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.Example.options">
+<tt class="descname">options</tt><a class="headerlink" href="#doctest.Example.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Словарь, отображающий флаги опций на <tt class="docutils literal"><span class="pre">True</span></tt> или <tt class="docutils literal"><span class="pre">False</span></tt>, который
+используется для переопределения опций по умолчанию лдя этого
+примера. Все опции, не определённые в этом словаре будут иметь
+значения по умолчанию (как определно в атрибуте <tt class="xref py py-attr docutils literal"><span class="pre">optionflags</span></tt>
+класса <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>). По умолчанию, опции не заданы.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="doctestfinder">
+<span id="doctest-doctestfinder"></span><h3>Объекты DocTestFinder<a class="headerlink" href="#doctestfinder" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.DocTestFinder">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">DocTestFinder</tt><big>(</big><em>[verbose][, parser][, recurse][, exclude_empty]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestFinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestFinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс-оброаботчик, который используется для извлечения <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>
+данного объекта из его строк документации и сторк документации вложенных
+объектов. <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> может быть извлечён из следующих типов
+объектов: модули, функции, классы, методы, статические методы, методы
+класса и свойства.</p>
+<p>Не обяхательный аргумент <em>verbose</em> может быть использован для отображения
+объектов, которые исследуются. По умолчанию - <tt class="docutils literal"><span class="pre">False</span></tt> (без вывода).</p>
+<p>Не обязательный аргумент <em>parser</em> определяет объект
+<a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a> (или его замену), которая используется для
+извлечения тестов из строк документации.</p>
+<p>Если не обязательный арумент <em>recurse</em> ложный, тогда
+<a class="reference internal" href="#doctest.DocTestFinder.find" title="doctest.DocTestFinder.find"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestFinder.find()</span></tt></a> будет проверять лишь переданный объект, но не
+вложенные объекты.</p>
+<p>Если не обязательный аргумент <em>exclude_empty</em> ложный, тогда
+<a class="reference internal" href="#doctest.DocTestFinder.find" title="doctest.DocTestFinder.find"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestFinder.find()</span></tt></a> будет включать тесты для объектов с пустыми
+строками документации.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.DocTestFinder" title="doctest.DocTestFinder"><tt class="xref py py-class docutils literal"><span class="pre">DocTestFinder</span></tt></a> определяет следующие методы:</p>
+<dl class="method">
+<dt id="doctest.DocTestFinder.find">
+<tt class="descname">find</tt><big>(</big><em>obj[, name][, module][, globs][, extraglobs]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestFinder.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestFinder.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Возвращает список из <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>, определённые в строках
+документации <a href="#id14"><span class="problematic" id="id15">*</span></a>obj*`a или его вложенных объектов.</p>
+<p>Не обязательный аргумент <em>name</em> определяет имя объекта; это имя
+будет использовано для создания имён для возвращаемых
+<a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>. Если <em>name</em> не определено, то будет использоваться
+<tt class="docutils literal"><span class="pre">obj.__name__</span></tt>.</p>
+<p>Не обязательный параметр <em>module</em> является модулем, который содержит
+нужный объект. Если модуль не определён или равен None, тогда
+поисковик тестов попробует автоматически определить нужный модель.
+Модуль объекта используется...</p>
+<ul class="simple">
+<li>Как пространство имён по умолчанию, если <em>globs</em> не определён.</li>
+<li>Чтобы не дать DocTestFinder извлечь DocTests из объектов, которые
+импортируются из других модулей. (Объекты, чьи модули отличаются от
+<em>module</em>, будут проигнорированы.)</li>
+<li>Для поиска имени файла, содержащего объект.</li>
+<li>Для помощи в поиске номера строки объекта в файле.</li>
+</ul>
+<p>Если <em>module</em> равен <tt class="docutils literal"><span class="pre">False</span></tt>, то не предпринимается попытки
+обнаружить модуль. Это не ясно и используется по большей части для
+тестирования самого doctest`a: если <em>module</em> равен <tt class="docutils literal"><span class="pre">False</span></tt> или
+<tt class="docutils literal"><span class="pre">None</span></tt> и при этом не может быть обнаружен автоматически, тогда
+все объекты, принадлежащие (не существующему) модулю, так что все
+содержащиеся объекты (рекурсивно) будут исследованны в поисках тестов.</p>
+<p>Глобальные переменные для каждого <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a> образовываются
+из соединения <em>globs</em> и <em>extraglobs</em> (определения из <em>extraglobs</em>
+переписывают определения из <em>globs</em>). Для каждого <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>
+создаётся своя поверхностная копия. Если <em>globs</em> не определено,
+тогда его значения равны <em>__dict__*`у модуля, если он определён, или
+``{}`` в противном случае. Если *extraglobs</em> не определён, вместо него
+используется <tt class="docutils literal"><span class="pre">{}</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="doctestparser">
+<span id="doctest-doctestparser"></span><h3>Объекты DocTestParser<a class="headerlink" href="#doctestparser" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.DocTestParser">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">DocTestParser</tt><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс-обработчик, используемый для извлечения интерактивных примеров из
+строки и использует их для создания объектов <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a> определяет следующие методы:</p>
+<dl class="method">
+<dt id="doctest.DocTestParser.get_doctest">
+<tt class="descname">get_doctest</tt><big>(</big><em>string</em>, <em>globs</em>, <em>name</em>, <em>filename</em>, <em>lineno</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestParser.get_doctest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestParser.get_doctest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Извлекает все тесты из заданной строки и собирает их в объект
+<a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>.</p>
+<p><em>globs</em>, <em>name</em>, <em>filename</em> и <em>lineno</em> являются атрибутами для нового
+объекта <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>. Смотрите документацию для <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestParser.get_examples">
+<tt class="descname">get_examples</tt><big>(</big><em>string</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestParser.get_examples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestParser.get_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Извлекает все тесты из заданой строки и возвращает их как список
+объектов <a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>. Номера строк начинаются с 0. Не
+обязательный аргумент <em>name</em> является именем, идентифицирующим строку
+и он используется только для сообщений об ошибках.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestParser.parse">
+<tt class="descname">parse</tt><big>(</big><em>string</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Делит заданную строку на тесты и текст и возвращает их как список из
+<a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a> и строк. Номера строк для <a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a> начинаются
+с 0.  Не
+обязательный аргумент <em>name</em> является именем, идентифицирующим строку
+и он используется только для сообщений об ошибках.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="doctestrunner">
+<span id="doctest-doctestrunner"></span><h3>Объекты DocTestRunner<a class="headerlink" href="#doctestrunner" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.DocTestRunner">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">DocTestRunner</tt><big>(</big><em>[checker][, verbose][, optionflags]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс-обработчик, используемый для извлечения и верификации интерактивных
+тестов в <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>.</p>
+<p>Сравнение между ожидаемым выводом и реальным производится при помощи
+<a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a>.  Это сравнение можно настроить при помощи
+различных флагов, описанных подробно в разделе <a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>.
+Если флагов не достаточно, то настроить сравнение можно передав
+подкласс <a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a> в конструктор.</p>
+<p>То, как выполнитель теста отображает вывод, можно определить двумя
+способами. Первый - функция для вывода может быть передана в
+<tt class="xref py py-meth docutils literal"><span class="pre">TestRunner.run()</span></tt>; эта функция будет вызвана для строки, которая
+должна быть отображена. По умолчанию это <tt class="docutils literal"><span class="pre">sys.stdout.write</span></tt>. Если этого
+не достаточно, то можно настроить вывод при помощи подкласса
+DocTestRunner, и переопределить его методы <a class="reference internal" href="#doctest.DocTestRunner.report_start" title="doctest.DocTestRunner.report_start"><tt class="xref py py-meth docutils literal"><span class="pre">report_start()</span></tt></a>,
+<a class="reference internal" href="#doctest.DocTestRunner.report_success" title="doctest.DocTestRunner.report_success"><tt class="xref py py-meth docutils literal"><span class="pre">report_success()</span></tt></a>, <a class="reference internal" href="#doctest.DocTestRunner.report_unexpected_exception" title="doctest.DocTestRunner.report_unexpected_exception"><tt class="xref py py-meth docutils literal"><span class="pre">report_unexpected_exception()</span></tt></a>
+и <a class="reference internal" href="#doctest.DocTestRunner.report_failure" title="doctest.DocTestRunner.report_failure"><tt class="xref py py-meth docutils literal"><span class="pre">report_failure()</span></tt></a>.</p>
+<p>Не обязательный именованый аргумент <em>checker</em> определяет объект
+<a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a> (или его замену), который должен использоваться
+для сравнения итогового и ожидаемого вывода теста.</p>
+<p>Не обязательный именованый аргумент <em>verbose</em> определяет подробность
+сообщений <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>‘а. Если <em>verbose</em> равен <tt class="docutils literal"><span class="pre">True</span></tt>, тогда
+будет выводиться информация о каждом примере в процессе его выполнения.
+Если <em>verbose</em> равен <tt class="docutils literal"><span class="pre">False</span></tt>, тогда будут выведены только сообщения об
+ошибках. Если <em>verbose</em> не определено или <tt class="docutils literal"><span class="pre">None</span></tt>, тогда подробный вывод
+будет выведен в том и только в том случае, если используется опция
+командной строки <tt class="docutils literal"><span class="pre">-v</span></tt>.</p>
+<p>Не обязательный именованный аргумент <em>optionflags</em> может быть использован
+для управления того, как исполнитель тестов будет сравнивать реальный
+вывод и ожидаемым и как будут отображаться ошибки. Более подробно это
+описано в разделе <a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.DocTestParser" title="doctest.DocTestParser"><tt class="xref py py-class docutils literal"><span class="pre">DocTestParser</span></tt></a> определяет следующие методы:</p>
+<dl class="method">
+<dt id="doctest.DocTestRunner.report_start">
+<tt class="descname">report_start</tt><big>(</big><em>out</em>, <em>test</em>, <em>example</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.report_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.report_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Сообщает, что исполнитель тестов готов выполнить данный пример. Этот
+метод предоставлен чтобы позволить подклассам <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>
+настроить свой вывод. Он не должен вызываться напрямую.</p>
+<p><em>example</em> - пример, который должен быть обработан. <em>test</em> - тест,
+содержащий <em>example</em>.  <em>out</em> - функция вывода информации, которая будет
+передана в <a class="reference internal" href="#doctest.DocTestRunner.run" title="doctest.DocTestRunner.run"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestRunner.run()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestRunner.report_success">
+<tt class="descname">report_success</tt><big>(</big><em>out</em>, <em>test</em>, <em>example</em>, <em>got</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.report_success"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.report_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Сообщает, что данный пример был успешно выполнен.  Этот
+метод предоставлен чтобы позволить подклассам <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>
+настроить свой вывод. Он не должен вызываться напрямую.</p>
+<p><em>example</em> - пример, который должен быть обработан. <em>got</em> - реальный
+вывод примера. <em>test</em> - тест,
+содержащий <em>example</em>.  <em>out</em> - функция вывода информации, которая будет
+передана в <a class="reference internal" href="#doctest.DocTestRunner.run" title="doctest.DocTestRunner.run"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestRunner.run()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestRunner.report_failure">
+<tt class="descname">report_failure</tt><big>(</big><em>out</em>, <em>test</em>, <em>example</em>, <em>got</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.report_failure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.report_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Сообщает, что данный пример был провален. Этот
+метод предоставлен чтобы позволить подклассам <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>
+настроить свой вывод. Он не должен вызываться напрямую.</p>
+<p><em>example</em> - пример, который должен быть обработан. <em>got</em> - реальный
+вывод примера. <em>test</em> - тест,
+содержащий <em>example</em>.  <em>out</em> - функция вывода информации, которая будет
+передана в <a class="reference internal" href="#doctest.DocTestRunner.run" title="doctest.DocTestRunner.run"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestRunner.run()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestRunner.report_unexpected_exception">
+<tt class="descname">report_unexpected_exception</tt><big>(</big><em>out</em>, <em>test</em>, <em>example</em>, <em>exc_info</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.report_unexpected_exception"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.report_unexpected_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Сообщает, что данный пример вызвал неожиданное исключение. Этот
+метод предоставлен чтобы позволить подклассам <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>
+настроить свой вывод. Он не должен вызываться напрямую.</p>
+<p><em>example</em> - пример, который должен быть обработан. <em>exc_info</em> -
+кортеж, содержащий информацию о неожиданном исключении (как
+возвращаемый <a class="reference external" href="http://docs.python.org/library/sys.html#sys.exc_info" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sys.exc_info()</span></tt></a>). <em>test</em> - тест, содержащий
+<em>example</em>.  <em>out</em> - функция вывода информации, которая будет
+передана в <a class="reference internal" href="#doctest.DocTestRunner.run" title="doctest.DocTestRunner.run"><tt class="xref py py-meth docutils literal"><span class="pre">DocTestRunner.run()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestRunner.run">
+<tt class="descname">run</tt><big>(</big><em>test[, compileflags][, out][, clear_globs]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Запускает пример в <em>test</em> (объект <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>), и отображает
+результат при помощи “writer” из функции <em>out</em>.</p>
+<p>Примеры запускаются в пространстве имён <tt class="docutils literal"><span class="pre">test.globs</span></tt>. Если
+<em>clear_globs</em> истинен (по умолчанию), тогда пространство имён будет
+отчищено после выполнения теста, чтобы помочь со сбором мусора. Если
+Вы захотите проверить пространство имён после выполнения теста,
+используйте <em>clear_globs=False</em>.</p>
+<p><em>compileflags</em> даёт набор флагов, которые должны использоваться
+компилятором Python при выполнении примера. Если не определён, то по
+умолчанию установлены флаги future-import, которые применяются к
+<em>globs</em>.</p>
+<p>Вывод каждого примера проверяется при помощи проверщика вывода из
+класса <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a> и результат форматируется методами
+<tt class="xref py py-meth docutils literal"><span class="pre">DocTestRunner.report_*()</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.DocTestRunner.summarize">
+<tt class="descname">summarize</tt><big>(</big><span class="optional">[</span><em>verbose</em><span class="optional">]</span><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestRunner.summarize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestRunner.summarize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Выводит итог всех тестов, которые были запущены этим DocTestRunner и
+возвращает <a class="reference external" href="http://docs.python.org/glossary.html#term-named-tuple" title="(in Python v2.7)"><em class="xref std std-term">named tuple</em></a> <tt class="docutils literal"><span class="pre">TestResults(failed,</span> <span class="pre">attempted)</span></tt>.</p>
+<p>Не обязательный аргумент <em>verbose</em> определяет то, насколько детальна
+будет итоговая информация. Если “подробность” не определена, тогда
+используется указатель “подробности” из <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.6: </span>Добавлен именованый кортеж.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="outputchecker">
+<span id="doctest-outputchecker"></span><h3>Объекты OutputChecker<a class="headerlink" href="#outputchecker" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="doctest.OutputChecker">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">OutputChecker</tt><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#OutputChecker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.OutputChecker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс, используемый для проверки совпадения реального вывода с ожидаемым.
+Он определяет два метода: <a class="reference internal" href="#doctest.OutputChecker.check_output" title="doctest.OutputChecker.check_output"><tt class="xref py py-meth docutils literal"><span class="pre">check_output()</span></tt></a>, который сравнивает
+полученную пару выводов и возвращает true, если они совпадают; и
+<a class="reference internal" href="#doctest.OutputChecker.output_difference" title="doctest.OutputChecker.output_difference"><tt class="xref py py-meth docutils literal"><span class="pre">output_difference()</span></tt></a>, который возвращает строку, описывающую разницу
+между двумя выводами.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+<p><a class="reference internal" href="#doctest.OutputChecker" title="doctest.OutputChecker"><tt class="xref py py-class docutils literal"><span class="pre">OutputChecker</span></tt></a> определяет следующие методы:</p>
+<dl class="method">
+<dt id="doctest.OutputChecker.check_output">
+<tt class="descname">check_output</tt><big>(</big><em>want</em>, <em>got</em>, <em>optionflags</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#OutputChecker.check_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.OutputChecker.check_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Возвращает <tt class="docutils literal"><span class="pre">True</span></tt> тогда и только тогда, когда реальный вывод теста
+(<em>got</em>) совпадает с желаемым (<em>want</em>). Эти строки всегда будут
+совпадающими, если они идентичны, но в зависимости от флагов
+исполнителя тестов некоторые не идентичные строки тоже могут
+рассматриваться как совпавшие. Более подробно это описано в разделе
+<a class="reference internal" href="#doctest-options"><em>Опции/флаги</em></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="doctest.OutputChecker.output_difference">
+<tt class="descname">output_difference</tt><big>(</big><em>example</em>, <em>got</em>, <em>optionflags</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#OutputChecker.output_difference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.OutputChecker.output_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Возвращает строку, описывающую разницу между ожидаемым выводом
+для примера (<em>example</em>) и реальным выводом (<em>got</em>).  <em>optionflags</em> -
+набор флагов, используемых для сравнения <em>want</em> и <em>got</em>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="doctest-debugging">
+<span id="id16"></span><h2>Отладка<a class="headerlink" href="#doctest-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Doctest предоставляет несколько механизмов для отладки примеров:</p>
+<ul>
+<li><p class="first">Некоторые функции преобразуют doctest`ы в исполняемые программы Python,
+которые можно запустить в отладчике Python, <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#module-pdb" title="pdb: Отладчик Python для интерактиного интерпретатора."><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a>.</p>
+</li>
+<li><p class="first">Класс <a class="reference internal" href="#doctest.DebugRunner" title="doctest.DebugRunner"><tt class="xref py py-class docutils literal"><span class="pre">DebugRunner</span></tt></a> является подклассом <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>,
+который возбуждает исключение для первого неудачного примера, содержащий
+информацию об этом примере. Эта информация может быть использована для
+“посмертной” отладки примера.</p>
+</li>
+<li><p class="first">Наборы <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a>, создаваемые функцией <tt class="xref py py-func docutils literal"><span class="pre">DocTestSuite()</span></tt>
+поддреживают метод <a class="reference internal" href="#doctest.debug" title="doctest.debug"><tt class="xref py py-meth docutils literal"><span class="pre">debug()</span></tt></a>, определяемый классом
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/unittest.html#unittest.TestCase" title="unittest.TestCase"><tt class="xref py py-class docutils literal"><span class="pre">unittest.TestCase</span></tt></a>.</p>
+</li>
+<li><p class="first">Вы можете добавить вызов функции <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#pdb.set_trace" title="pdb.set_trace"><tt class="xref py py-func docutils literal"><span class="pre">pdb.set_trace()</span></tt></a> в примере doctest`а
+и вы будете “выброшены” в отладчик Python, когда эта строка будет
+выполнена. После этого вы сможете проверить переменные, и т.д. Например,
+предположим, что файл <tt class="file docutils literal"><span class="pre">a.py</span></tt> содержит только такую строку
+документации:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">"""</span>
+<span class="sd">&gt;&gt;&gt; def f(x):</span>
+<span class="sd">...     g(x*2)</span>
+<span class="sd">&gt;&gt;&gt; def g(x):</span>
+<span class="sd">...     print x+3</span>
+<span class="sd">...     import pdb; pdb.set_trace()</span>
+<span class="sd">&gt;&gt;&gt; f(3)</span>
+<span class="sd">9</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<p>Тогда интерактивная сессия Python может выглядеть так:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">a</span><span class="o">,</span> <span class="nn">doctest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">--Return--</span>
+<span class="go">&gt; &lt;doctest a[1]&gt;(3)g()-&gt;None</span>
+<span class="go">-&gt; import pdb; pdb.set_trace()</span>
+<span class="go">(Pdb) list</span>
+<span class="go">  1     def g(x):</span>
+<span class="go">  2         print x+3</span>
+<span class="go">  3  -&gt;     import pdb; pdb.set_trace()</span>
+<span class="go">[EOF]</span>
+<span class="go">(Pdb) print x</span>
+<span class="go">6</span>
+<span class="go">(Pdb) step</span>
+<span class="go">--Return--</span>
+<span class="go">&gt; &lt;doctest a[0]&gt;(2)f()-&gt;None</span>
+<span class="go">-&gt; g(x*2)</span>
+<span class="go">(Pdb) list</span>
+<span class="go">  1     def f(x):</span>
+<span class="go">  2  -&gt;     g(x*2)</span>
+<span class="go">[EOF]</span>
+<span class="go">(Pdb) print x</span>
+<span class="go">3</span>
+<span class="go">(Pdb) step</span>
+<span class="go">--Return--</span>
+<span class="go">&gt; &lt;doctest a[2]&gt;(1)?()-&gt;None</span>
+<span class="go">-&gt; f(3)</span>
+<span class="go">(Pdb) cont</span>
+<span class="go">(0, 3)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Была добавлена возможность использовать <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#pdb.set_trace" title="pdb.set_trace"><tt class="xref py py-func docutils literal"><span class="pre">pdb.set_trace()</span></tt></a> внутри
+doctest`ов.</p>
+</div>
+</li>
+</ul>
+<p>Фнукции, которые преобразуют doctest`ы в код Python и, возомжно, запускают
+полученный код в отладчике:</p>
+<dl class="function">
+<dt id="doctest.script_from_examples">
+<tt class="descclassname">doctest.</tt><tt class="descname">script_from_examples</tt><big>(</big><em>s</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#script_from_examples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.script_from_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Преобразует текст с примером в скрипт.</p>
+<p>Аргумент <em>s</em> является строкой, содержащей пример doctest`а. Строка
+преобразуется в скрипт Python, где примеры в <em>s</em> преобразуются в обычный
+код, а всё остальное - в комментарии. Полученный скрипт возвращается как
+строка. Например:</p>
+<div class="highlight-python"><div class="highlight"><pre>import doctest
+print doctest.script_from_examples(r"""
+    Set x and y to 1 and 2.
+    &gt;&gt;&gt; x, y = 1, 2
+
+    Print their sum:
+    &gt;&gt;&gt; print x+y
+    3
+""")
+</pre></div>
+</div>
+<p>выведет:</p>
+<div class="highlight-python"><div class="highlight"><pre># Set x and y to 1 and 2.
+x, y = 1, 2
+#
+# Print their sum:
+print x+y
+# Expected:
+## 3
+</pre></div>
+</div>
+<p>Эта функция используется другими функциями модуля (см ниже), но может
+быть полезна, если вы хотите преобразовать интерактивную сессию Python
+в скрипт Python.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="doctest.testsource">
+<tt class="descclassname">doctest.</tt><tt class="descname">testsource</tt><big>(</big><em>module</em>, <em>name</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#testsource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.testsource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Преобразует doctest из объекта в скрипт.</p>
+<p>Аргумент <em>module</em> является объектом модуля или именем модуля с точками,
+содержащим объект, чьи строки документации нас интересуют. Аргумент
+<em>name</em> - имя (в модуле) объекта, чьи строки документации нам нужны.
+Результатом является строка, содержащая строки документации объекта,
+преобразованные в скрипт Python, как это описано выше в функции
+<a class="reference internal" href="#doctest.script_from_examples" title="doctest.script_from_examples"><tt class="xref py py-func docutils literal"><span class="pre">script_from_examples()</span></tt></a>.  Например, если модуль <tt class="file docutils literal"><span class="pre">a.py</span></tt>
+содержит функцию верхнего уровня <tt class="xref py py-func docutils literal"><span class="pre">f()</span></tt>, тогда:</p>
+<div class="highlight-python"><div class="highlight"><pre>import a, doctest
+print doctest.testsource(a, "a.f")
+</pre></div>
+</div>
+<p>выведет скрипт для строки документации функции <tt class="xref py py-func docutils literal"><span class="pre">f()</span></tt>, где тест будет
+преобразован в код, а всё остальное помещено в комментакрии.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="doctest.debug">
+<tt class="descclassname">doctest.</tt><tt class="descname">debug</tt><big>(</big><em>module</em>, <em>name</em><span class="optional">[</span>, <em>pm</em><span class="optional">]</span><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#debug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Выполняет отладку  doctest`а для объекта.</p>
+<p>Аргументы <em>module</em> и <em>name</em> аналогичны для функции <a class="reference internal" href="#doctest.testsource" title="doctest.testsource"><tt class="xref py py-func docutils literal"><span class="pre">testsource()</span></tt></a>.
+Полученный скрипт для строк документации нужного объекта записываются
+во временный файл и затем этот файл запускается под котролем отладчика
+Python - <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#module-pdb" title="pdb: Отладчик Python для интерактиного интерпретатора."><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a>.</p>
+<p>Поверхностная копия <tt class="docutils literal"><span class="pre">module.__dict__</span></tt> будет использоваться как для
+локального, так и для глобального контекста исполнения.</p>
+<p>Не обязательный аргумент <em>pm</em> определяет, будет ли использоваться
+“посмертная” отладка. Если <em>pm</em> истинен, тогда скрпит запускается
+напрямую и отладчик подключается только если скрипт прерывается
+возбуждением не обрабатываемого исключения. Если это происходит,
+включается “посмертная” отладка при помощи <a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#pdb.post_mortem" title="pdb.post_mortem"><tt class="xref py py-func docutils literal"><span class="pre">pdb.post_mortem()</span></tt></a>,
+получая объект трассировки из не перехваченного исключения. Если <em>pm</em> не
+определено или ложно, скрипт запускается с самого начала под отладчиком,
+передавая соответствующий вызов функции <a class="reference external" href="http://docs.python.org/library/functions.html#execfile" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">execfile()</span></tt></a> в
+<a class="reference internal" href="http://python-lab.ru/documentation/27/stdlib/pdb.html#pdb.run" title="pdb.run"><tt class="xref py py-func docutils literal"><span class="pre">pdb.run()</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.3.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>Был добавлен аргумент <em>pm</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="doctest.debug_src">
+<tt class="descclassname">doctest.</tt><tt class="descname">debug_src</tt><big>(</big><em>src[, pm][, globs]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#debug_src"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.debug_src" title="Permalink to this definition">¶</a></dt>
+<dd><p>Выполняет отладку doctest`а из строки.</p>
+<p>Эта функция похожа на <a class="reference internal" href="#doctest.debug" title="doctest.debug"><tt class="xref py py-func docutils literal"><span class="pre">debug()</span></tt></a>, за исключением того, что строка,
+содержащая примеры определена напрямую, через аргумент <em>src</em>.</p>
+<p>Не обязательный аргумент <em>pm</em> имеет то же значение, что и в функции
+<a class="reference internal" href="#doctest.debug" title="doctest.debug"><tt class="xref py py-func docutils literal"><span class="pre">debug()</span></tt></a>.</p>
+<p>Не обязательный аргумент <em>globs</em> передаёт словарь, который будет
+использоваться как локальный и глобальный контекст исполнения. Если он не
+определён или равен <tt class="docutils literal"><span class="pre">None</span></tt>, используется пустой словарь. Если
+определено, будет использоваться поверхностная копия словаря.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+</dd></dl>
+
+<p>Класс <a class="reference internal" href="#doctest.DebugRunner" title="doctest.DebugRunner"><tt class="xref py py-class docutils literal"><span class="pre">DebugRunner</span></tt></a> и специальные исключения, которые он может
+вызывать, являются наиболее интересными для авторов тестирующих фреймворков,
+и будут описаны тут лишь вкратце. Смотрите исходный код и в особенности
+строки документации <a class="reference internal" href="#doctest.DebugRunner" title="doctest.DebugRunner"><tt class="xref py py-class docutils literal"><span class="pre">DebugRunner</span></tt></a>‘а (которые являются тестами!),
+где вы найдёте больше информации:</p>
+<dl class="class">
+<dt id="doctest.DebugRunner">
+<em class="property">class </em><tt class="descclassname">doctest.</tt><tt class="descname">DebugRunner</tt><big>(</big><em>[checker][, verbose][, optionflags]</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DebugRunner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DebugRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Подкласс <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>‘а, который возбуждает исключение,
+как только обнаруживается ошибка. Если возникает неожиданное исключение,
+возбуждается исключение <a class="reference internal" href="#doctest.UnexpectedException" title="doctest.UnexpectedException"><tt class="xref py py-exc docutils literal"><span class="pre">UnexpectedException</span></tt></a>, содержащее тест,
+пример и оригинальное исключение. Если вывод не совпадает, тогда
+возбуждается исключение <a class="reference internal" href="#doctest.DocTestFailure" title="doctest.DocTestFailure"><tt class="xref py py-exc docutils literal"><span class="pre">DocTestFailure</span></tt></a>, содержащее тест, пример
+и реальный вывод.</p>
+<p>Информацию о параметрах конструктора и методах можно найти в документации
+к классу <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a> в разделе <a class="reference internal" href="#doctest-advanced-api"><em>Продвинутый API</em></a>.</p>
+</dd></dl>
+
+<p>Есть два исключения, которые могут быть вызваны экземпляром
+<a class="reference internal" href="#doctest.DebugRunner" title="doctest.DebugRunner"><tt class="xref py py-class docutils literal"><span class="pre">DebugRunner</span></tt></a>:</p>
+<dl class="exception">
+<dt id="doctest.DocTestFailure">
+<em class="property">exception </em><tt class="descclassname">doctest.</tt><tt class="descname">DocTestFailure</tt><big>(</big><em>test</em>, <em>example</em>, <em>got</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#DocTestFailure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.DocTestFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Исключение возбуждается классом <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>, чтобы сообщить,
+что реальный вывод примера не соответствует ожидаемому. Аргументы
+конструктора используются для инициализации атрибутов с тем же именем.</p>
+</dd></dl>
+
+<p><a class="reference internal" href="#doctest.DocTestFailure" title="doctest.DocTestFailure"><tt class="xref py py-exc docutils literal"><span class="pre">DocTestFailure</span></tt></a> определяет следующие атрибуты:</p>
+<dl class="attribute">
+<dt id="doctest.DocTestFailure.test">
+<tt class="descclassname">DocTestFailure.</tt><tt class="descname">test</tt><a class="headerlink" href="#doctest.DocTestFailure.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Объект <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>, который выполнялся, когда провалился пример.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTestFailure.example">
+<tt class="descclassname">DocTestFailure.</tt><tt class="descname">example</tt><a class="headerlink" href="#doctest.DocTestFailure.example" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>, который был провален.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.DocTestFailure.got">
+<tt class="descclassname">DocTestFailure.</tt><tt class="descname">got</tt><a class="headerlink" href="#doctest.DocTestFailure.got" title="Permalink to this definition">¶</a></dt>
+<dd><p>Реальный вывод примера.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="doctest.UnexpectedException">
+<em class="property">exception </em><tt class="descclassname">doctest.</tt><tt class="descname">UnexpectedException</tt><big>(</big><em>test</em>, <em>example</em>, <em>exc_info</em><big>)</big><a class="reference internal" href="http://python-lab.ru/_modules/doctest.html#UnexpectedException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#doctest.UnexpectedException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Исключение, вызываемое <a class="reference internal" href="#doctest.DocTestRunner" title="doctest.DocTestRunner"><tt class="xref py py-class docutils literal"><span class="pre">DocTestRunner</span></tt></a>, чтобы сообщить, что пример
+doctest`а вызвал неожиданное исключение. Аргументы
+конструктора используются для инициализации атрибутов с тем же именем.</p>
+</dd></dl>
+
+<p><a class="reference internal" href="#doctest.UnexpectedException" title="doctest.UnexpectedException"><tt class="xref py py-exc docutils literal"><span class="pre">UnexpectedException</span></tt></a> определяет следующие атрибуты:</p>
+<dl class="attribute">
+<dt id="doctest.UnexpectedException.test">
+<tt class="descclassname">UnexpectedException.</tt><tt class="descname">test</tt><a class="headerlink" href="#doctest.UnexpectedException.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Объект <a class="reference internal" href="#doctest.DocTest" title="doctest.DocTest"><tt class="xref py py-class docutils literal"><span class="pre">DocTest</span></tt></a>, который выполнялся, когда пример был провален.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.UnexpectedException.example">
+<tt class="descclassname">UnexpectedException.</tt><tt class="descname">example</tt><a class="headerlink" href="#doctest.UnexpectedException.example" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#doctest.Example" title="doctest.Example"><tt class="xref py py-class docutils literal"><span class="pre">Example</span></tt></a>, который был провален.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="doctest.UnexpectedException.exc_info">
+<tt class="descclassname">UnexpectedException.</tt><tt class="descname">exc_info</tt><a class="headerlink" href="#doctest.UnexpectedException.exc_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Кортеж, содержащий информацию о неожиданном исключении в том виде, как он
+возвращается функцией <a class="reference external" href="http://docs.python.org/library/sys.html#sys.exc_info" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sys.exc_info()</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="soapbox">
+<span id="doctest-soapbox"></span><h2>Soapbox<a class="headerlink" href="#soapbox" title="Permalink to this headline">¶</a></h2>
+<p>Как упоминалось в предисловии, <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> был создан для трёх основных
+целей:</p>
+<ol class="arabic simple">
+<li>Проверить примеры в строках документации.</li>
+<li>Регрессионного тестирования.</li>
+<li>Исполняемой документации / читабельных тестов.</li>
+</ol>
+<p>Эти варианты использования имеют различные требования и очень важно их
+различать. В частности, заполнение ваших строк документации не ясными
+тестами испортит вашу документацию.</p>
+<p>Когда вы пишете строки документации, тщательно выбирайте примеры для них.
+Это отдельное искуство, которое может быть не очевидно на первый взгляд.
+Примеры должны добавлять ценности документации. Хорошие примеры могут
+быть ценее многих слов. Если все сделано внимательно, примеры будут иметь
+неоценимое значение для пользователей и окупят время, необходимое, чтобы
+собрать их; особенно с течением времени. Я до сих пор удивляюсь, как часто
+один из моих примеров <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> перестает работать после «безвредного»
+изменения.</p>
+<p>Doctest так же является замечательным инструментом для регрессионного
+тестирования, особенно если вы не экономите на пояснительном тексте.
+Смешивание текста и примеров позволяет гораздо проще отслеживать то, что
+конкретно тестируется и почему. Когда тест не удаётся, хороший текст
+позволяет гораздо проще понять, в чём именно проблема и как её исправить.
+Конечно, вы можете написать исчерпывающие комментарии в код теста, но мало
+кто так делает. Большинство обнаруживает, что использование docstest’a
+вместо этого приводит к более понятным тестам. Возможно это просто потому,
+что doctest позволяет писать текст проще, чем код, так как указывать
+комментарии в коде теста достаточно тяжело. Я думаю, что на самом деле это
+глубже: когда вы пишете тесты, вы хотите объяснить суть вашего скрипта и
+проиллюстрировать его примерами. Это само по себе ведёт к тому, что тестовые
+файлы начинаются с простых примеров и переходят к более сложным. В
+результате вы получаете последовательное изложение вместо набора
+изолированных функций, которые проверяют отдельные куски функционала, что
+выглядит гораздо менее понятно. Такой подход стирает разницу между
+тестированием и объяснением.</p>
+<p>Регрессионное тестирование лучше всего ограничивается отдельными объектами
+и файлами. Есть несколько опций для организации тестов:</p>
+<ul class="simple">
+<li>Написание текстовых файлов, содержащих тесты и примеры, которые тестируют
+файлы при помощи <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><tt class="xref py py-func docutils literal"><span class="pre">testfile()</span></tt></a> или <tt class="xref py py-func docutils literal"><span class="pre">DocFileSuite()</span></tt>. Это
+рекомендуется, хотя проще это сделать с новым проектом, который с самого
+начала расчитан на использование doctest.</li>
+<li>Определить функции с названием <tt class="docutils literal"><span class="pre">_regrtest_topic</span></tt>, которые содержат
+одиночные строки документации, содержащие тесты для нужного топика. Эти
+функции могут находиться в том же файле, что и модуль, или быть вынесены
+в отдельный тестовый файл.</li>
+<li>Определить словарь <tt class="docutils literal"><span class="pre">__test__</span></tt>, отображающий темы регрессионного
+тестирования на строки документации, содержащие тесты.</li>
+</ul>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label"><col></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>Примеры, содержащие как ожидаемый вывод, так и исключения не
+поддерживаются. Попытка угадать, где заканчивается одно и начинается
+другое способствует ошибкам и это делает тесты менее понятными.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://python-lab.ru/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">doctest</span></tt> — Тестирование интерактивных примеров на Python</a><ul>
+<li><a class="reference internal" href="#docstrings">Простое использование: Проверка примеров в Docstrings</a></li>
+<li><a class="reference internal" href="#doctest-simple-testfile">Простое использование: Проверка примеров в текстовом файле</a></li>
+<li><a class="reference internal" href="#doctest-how-it-works">Как это работает</a><ul>
+<li><a class="reference internal" href="#doctest-which-docstrings">Какие строки документации проверяются?</a></li>
+<li><a class="reference internal" href="#doctest-finding-examples">Как распознаются примеры из строк документации?</a></li>
+<li><a class="reference internal" href="#doctest-execution-context">Каков контекст выполнения?</a></li>
+<li><a class="reference internal" href="#doctest-exceptions">Что по поводу исключений?</a></li>
+<li><a class="reference internal" href="#doctest-options">Опции/флаги</a></li>
+<li><a class="reference internal" href="#doctest-directives">Директивы</a></li>
+<li><a class="reference internal" href="#doctest-warnings">Предупреждения</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api">Базовый API</a></li>
+<li><a class="reference internal" href="#unittest-api">Unittest API</a></li>
+<li><a class="reference internal" href="#doctest-advanced-api">Продвинутый API</a><ul>
+<li><a class="reference internal" href="#doctest">Объекты DocTest</a></li>
+<li><a class="reference internal" href="#example">Объекты Example</a></li>
+<li><a class="reference internal" href="#doctestfinder">Объекты DocTestFinder</a></li>
+<li><a class="reference internal" href="#doctestparser">Объекты DocTestParser</a></li>
+<li><a class="reference internal" href="#doctestrunner">Объекты DocTestRunner</a></li>
+<li><a class="reference internal" href="#outputchecker">Объекты OutputChecker</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctest-debugging">Отладка</a></li>
+<li><a class="reference internal" href="#soapbox">Soapbox</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://python-lab.ru/documentation/27/stdlib/inspect.html" title="previous chapter"><tt class="docutils literal"><span class="pre">inspect</span></tt> — Инспекция “живых” объектов</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://python-lab.ru/documentation/27/stdlib/pdb.html" title="next chapter"><tt class="docutils literal"><span class="pre">pdb</span></tt> — Отладчик Python</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://python-lab.ru/_sources/documentation/27/stdlib/doctest.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input name="q" type="text">
+      <input value="Go" type="submit">
+      <input name="check_keywords" value="yes" type="hidden">
+      <input name="area" value="default" type="hidden">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://python-lab.ru/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://python-lab.ru/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://python-lab.ru/documentation/27/stdlib/pdb.html" title="pdb — Отладчик Python">next</a> |</li>
+        <li class="right">
+          <a href="http://python-lab.ru/documentation/27/stdlib/inspect.html" title="inspect — Инспекция “живых” объектов">previous</a> |</li>
+        <li><a href="http://python-lab.ru/index.html">python-lab 1.0a documentation</a> »</li>
+          <li><a href="http://python-lab.ru/documentation/index.html">Документация Python 2.7!</a> »</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        © Copyright 2013, Ishayahu Lastov.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+<div class="footer">This page uses <a href="http://analytics.google.com/">
+Google Analytics</a> to collect statistics. You can disable it by blocking
+the JavaScript coming from www.google-analytics.com.
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48729029-1', 'python-lab.ru');
+  ga('send', 'pageview');
+
+</script>
+</div>
+
+  
+</body></html>

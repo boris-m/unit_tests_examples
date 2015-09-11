@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://habrahabr.ru/post/121162/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./Тестирование. Начало _ Хабрахабр_files/fbevents.js"></script><script type="text/javascript" async="" src="./Тестирование. Начало _ Хабрахабр_files/watch.js"></script><script async="" src="./Тестирование. Начало _ Хабрахабр_files/analytics.js"></script>
+    
+    <meta content="width=1024" name="viewport">
+
+
+    <title>Тестирование. Начало / Хабрахабр</title>
+
+    <meta name="yandex-verification" content="67d46b975fa41645"> <!-- яндекс вебмастер - верификация -->
+
+    <meta name="description" content="
+Привет. В этой серии постов я попробую рассказать про тестирование кода на питоне, в частности проектов django. Мы рассмотрим модульное тестирование (юнит-тесты), статический анализ кода и...">
+    <meta name="keywords" content="python, unittest, doctest">
+
+    	<meta property="fb:app_id" content="444736788986613"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="http://habrahabr.ru/post/121162/"> 
+<meta property="og:title" content="Тестирование. Начало">
+	<meta property="og:image" content="http://habrastorage.org/storage/9c1771f8/cfce96c6/2a16a33b/5e5c4cef.png">
+	<link rel="image_src" href="./Тестирование. Начало _ Хабрахабр_files/5e5c4cef.png">
+	
+<meta property="og:description" content="Привет. В этой серии постов я попробую рассказать про тестирование кода на питоне, в частности проектов django. Мы рассмотрим модульное тестирование...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+	<meta property="al:ios:url" content="habrahabr://post/121162">
+<meta property="al:ios:app_store_id" content="778613673">
+<meta property="al:ios:app_name" content="Habrahabr">
+<meta property="al:android:url" content="habrahabr://post/121162">
+<meta property="al:android:app_name" content="Habrahabr">
+<meta property="al:android:package" content="ru.habrahabr">
+<meta property="al:windows_phone:url" content="habrahabr://post/121162">
+<meta property="al:windows_phone:app_name" content="Habrahabr">
+<meta property="al:windows_phone:app_id" content="460a6bd6-8955-470f-935e-9ea1726a6060">
+	<link rel="canonical" href="./Тестирование. Начало _ Хабрахабр_files/Тестирование. Начало _ Хабрахабр.html">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.habrahabr.ru/post/121162/">
+
+
+
+
+    <link href="https://habracdn.net/habr/styles/1441972198/assets/global_main.css" rel="stylesheet" media="all">
+    <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/global_main.js"></script>
+        <link href="https://habracdn.net/habr/styles/1441972198/assets/post_common_css.css" rel="stylesheet" media="all">
+    <link href="https://habracdn.net/habr/styles/1441972198/users/all.css" rel="stylesheet" media="all">
+
+    <link href="https://habracdn.net/habr/styles/1441972198/printer.css" rel="stylesheet" media="print">
+
+    
+    
+
+
+
+
+        <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/post_common_js.js"></script>
+    <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/all.js"></script>
+
+
+      <!-- www.criteo.com/ru -->
+<script type="text/javascript">
+  var crtg_nid="2580";
+  var crtg_cookiename="cto_rtt";
+  var crtg_varname="crtg_content";
+  function crtg_getCookie(c_name){
+    var i,x,y,ARRCookies=document.cookie.split(";");
+    for(i=0;i<ARRCookies.length;i++){
+      x=ARRCookies[i].substr(0,ARRCookies[i].indexOf("="));
+      y=ARRCookies[i].substr(ARRCookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+      if(x==c_name){return unescape(y);}
+    }
+    return'';
+  }
+  var crtg_content = crtg_getCookie(crtg_cookiename);var crtg_rnd=Math.floor(Math.random()*99999999999);
+  var crtg_url=location.protocol+'//rtax.criteo.com/delivery/rta/rta.js?netId='+escape(crtg_nid);crtg_url+='&cookieName='+escape(crtg_cookiename);crtg_url+='&rnd='+crtg_rnd;crtg_url+='&varName=' + escape(crtg_varname);
+  var crtg_script=document.createElement('script');crtg_script.type='text/javascript';crtg_script.src=crtg_url;crtg_script.async=true;
+  if(document.getElementsByTagName("head").length>0)document.getElementsByTagName("head")[0].appendChild(crtg_script);
+  else
+  if(document.getElementsByTagName("body").length>0)document.getElementsByTagName("body")[0].appendChild(crtg_script);
+</script><script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/rta.js" async=""></script>
+      <script>
+        var N = 5;
+        var ar_duo1 = Math.floor(Math.random()*N+1);
+      </script>
+      <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/adriver.core.2.js"></script>
+
+    <link title="Хабрахабр / Комментарии к публикации «Тестирование. Начало»" type="application/rss+xml" rel="alternate" href="http://habrahabr.ru/rss/post/121162/">
+
+    <script src="./Тестирование. Начало _ Хабрахабр_files/advertising.js"></script>
+
+<script type="text/javascript">
+
+  if (typeof adbl == 'undefined')
+  {
+    var adbl = 'yes';
+  }
+
+  var user_type = "guest";
+
+  var page_type = "publish_ugc";
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-726094-1',  'auto');
+  ga('create', 'UA-726094-24', 'auto', {'name': 'HGM'});
+
+  ga('require', 'displayfeatures');
+  ga('set', 'dimension1', user_type); // user type - guest/readonly/habrauser
+
+
+  ga('set', 'dimension4', adbl);
+
+  ga('set', 'dimension5', page_type);
+
+
+  if(typeof removeUtms === 'undefined') {
+    removeUtms = function(){};
+  }
+
+  ga('HGM.set', 'dimension1', user_type);
+  ga('HGM.set', 'dimension2', "habrahabr");
+  ga('HGM.send', 'pageview');
+
+  ga('send', 'pageview', { 'hitCallback': removeUtms });
+
+
+</script>
+
+
+    <meta content="Хабрахабр" name="apple-mobile-web-app-title">
+<link href="http://habrahabr.ru/images/apple-touch-icon_142x142.png" rel="apple-touch-icon" type="image/png">
+  </head>
+
+  <body><style type="text/css">#navbar .nav_panel .tab.tab_print:hover path,#navbar .nav_panel .tab.tab_print:hover text { fill: #0090CE; } </style>
+    <div id="TMpanel">
+  <div class="container">
+    <div class="menu">
+      <a href="http://tmfeed.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">TM Feed</a>
+      <a href="http://habrahabr.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo" class="current">Хабрахабр</a>
+      <a href="http://megamozg.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Мегамозг</a>
+      <a href="http://geektimes.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Geektimes</a>
+      <a href="https://toster.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Тостер</a>
+      <a href="https://moikrug.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Мой круг</a>
+      <a href="http://freelansim.ru/?utm_source=habrahabr&utm_medium=referral&utm_campaign=mainpage&utm_content=head_link">Фрилансим</a>
+    </div>
+      <div class="menu special"><a href="http://bit.ly/1NXPVgw" target="_blank" style="color: #8baab5">Трансформеры</a><a href="http://bit.ly/1EBmFdN" target="_blank" style="color: #d01d00">Как использовать часы?</a><a href="http://bit.ly/1K5XUXl" target="_blank" style="color: #3c86ee">Communigate Pro</a></div>
+  </div>
+</div>
+
+
+    <div id="layout">
+      <div id="navbar_overlay" class="hidden"></div>
+<div id="navbar" class="fixed" style="bottom: 0px;">
+    <div class="nav_panel">
+        <a href="http://habrahabr.ru/" class="logo"></a>
+
+            <a href="http://habrahabr.ru/posts/" class="tab tab_menu" data-tab="menu_tab" title="Меню"><span class="g-icon g-icon-burger"></span></a>
+            <a href="https://habrahabr.ru/auth/login/" class="tab tab_login" id="login" title="Войти"><span class="g-icon g-icon-lock"></span></a>
+
+        <a href="http://bit.ly/1UhubBk" class="tab tab_print" id="print_tab" target="_blank" data-post-id="121162"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 971 971" enable-background="new 0 0 971 971" xml:space="preserve">
+<path fill="#C0C0C0" d="M649.4,199.7v206.3H343.8V199.7H649.4 M680,165.3h-30.6H343.8h-30.6v34.4v206.3v34.4h30.6h305.7H680v-34.4
+	V199.7L680,165.3L680,165.3z"></path>
+<path fill="#C0C0C0" d="M770.8,531.7l-29.7-37.2c-3.1-3.9-6.9-7.4-11.2-10.5c6.9-8.7,11.2-19.8,11.2-32.1v-298
+	c0-27.4-20.6-49.7-45.9-49.7H297.9c-25.3,0-45.8,22.3-45.8,49.7v298c0,12.3,4.3,23.4,11.2,32.1c-4.2,3.1-8.1,6.6-11.2,10.5
+	l-29.7,37.2c-6.3,7.9-9.1,16.8-9,25.6h-0.2c0,0,0,66.3,0,68.4c0,6.7,1.4,8,7.3,8c2.2,0,548.8,0,551.4,0c6.7,0,7.7-2.2,7.7-9.2
+	c0-2.6,0.2-67.3,0.2-67.3C779.8,548.5,777.1,539.6,770.8,531.7z M282.6,153.9c0-9.1,6.9-16.6,15.3-16.6h397.4
+	c8.4,0,15.3,7.5,15.3,16.6v298c0,9.1-6.9,16.6-15.3,16.6H297.9c-8.4,0-15.3-7.5-15.3-16.6L282.6,153.9L282.6,153.9z M246.3,550.8
+	l29.7-37.2c5.2-6.6,16.4-12,24.8-12h391.6c8.4,0,19.6,5.4,24.8,12l29.7,37.2c5.2,6.6,2.6,12-5.8,12H252.1
+	C243.6,562.7,241,557.3,246.3,550.8z M751,608.3h-508v-16.1c2.9,0.6,5.8,1.1,9,1.1h489.1c3.5,0,6.7-0.5,9.9-1.2L751,608.3L751,608.3
+	z"></path>
+<path fill="#C0C0C0" d="M682.5,548.1H310.6c-8.4,0-15.3-6.9-15.3-15.3c0-8.4,6.8-15.3,15.3-15.3h371.9c8.5,0,15.3,6.8,15.3,15.3
+	C697.8,541.2,691,548.1,682.5,548.1z"></path>
+<g>
+	<path fill="#C0C0C0" d="M484.5,708.1c5.9,0,8.9,2.8,8.9,8.4v157.4h-33c-5.9,0-8.9-2.8-8.9-8.4V806H416v68h-33
+		c-5.9,0-8.9-2.8-8.9-8.4V708.1h33c5.9,0,8.9,2.8,8.9,8.4V772h35.4v-63.9H484.5z"></path>
+	<path fill="#C0C0C0" d="M530.4,873.9c-5.9,0-8.9-2.8-8.9-8.4V711c8.9-1.8,18-3.1,27.2-3.9c9.2-0.9,17.3-1.3,24.5-1.3
+		c10.1,0,18.8,1,26.2,2.9c7.4,1.9,13.6,5,18.4,9.3c4.9,4.3,8.5,10,10.8,17c2.3,7,3.5,15.6,3.5,25.8c0,19.8-4.2,34.1-12.6,43
+		S598.8,817,582.3,817c-4,0-7.8-0.2-11.4-0.6c-3.6-0.4-6.5-0.8-8.7-1.3v58.9H530.4z M562.2,785.6c1.9,0.3,3.7,0.6,5.3,0.7
+		c1.6,0.2,3.1,0.2,4.5,0.2c3.5,0,6.5-0.4,9-1.1c2.5-0.7,4.5-2.1,6.1-4.1c1.6-2,2.8-4.7,3.6-8c0.8-3.3,1.2-7.7,1.2-12.9
+		c0-4.9-0.4-9-1.1-12.2c-0.7-3.2-1.8-5.7-3.2-7.5c-1.4-1.8-3.3-3.1-5.6-3.7c-2.3-0.6-5-1-8-1c-1.4,0-3.4,0-6,0.1
+		c-2.6,0.1-4.5,0.2-5.7,0.4V785.6z"></path>
+</g>
+</svg></a>
+
+        <a href="http://habrahabr.ru/post/121162/#" class="scroll_to_up scroll_to_up_for_guest" id="scroll_to_top" title="Наверх"></a>
+    </div>
+    <div class="nav_tabs_content ">
+
+        <div class="nav_tab hidden" id="menu_tab">
+            <div class="title">Разделы</div>
+            <form action="http://habrahabr.ru/search/" method="get" class="global_search_form">
+                <div>
+                    <input type="text" name="q" placeholder="Поиск">
+                </div>
+            </form>
+            <div class="menu">
+                <a href="http://habrahabr.ru/posts/top/">Публикации</a>
+                <a href="http://habrahabr.ru/hubs/">Хабы</a>
+                <a href="http://habrahabr.ru/companies/">Компании</a>
+                <a href="http://habrahabr.ru/users/">Пользователи</a>
+                <a href="http://habrahabr.ru/sandbox/">Песочница</a>
+                <div class="line"></div>
+                <a href="http://toster.ru/" class="new_window">Q&amp;A</a>
+                <a href="https://moikrug.ru/" class="new_window">Вакансии</a>
+
+
+
+
+            </div>
+
+                
+
+                        <div class="line"></div>
+                        <div class="title">Спецпроекты</div>
+                        <div class="menu">
+
+                        <a href="http://bit.ly/1hOeReu" target="_blank">DIY сообщества</a>
+
+                        <a href="http://bit.ly/1NXPVgw" target="_blank">Трансформеры</a>
+
+                        <a href="http://special.habrahabr.ru/mastercard/paypass/" target="_blank">AlfaPay</a>
+                        </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+      <div class="inner">
+
+
+
+          <script type="text/javascript">
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    $(document).ready(function(){
+        if (adbl == 'yes' && !readCookie('adb-p'))
+        {
+            $('.dont-add-our-site-pls').show();
+            ga('send', 'pageview', { 'page': '/virtual-pages/adblock/show_widget'});
+        }
+    });
+</script>
+<div class="dont-add-our-site-pls" style="display: none;">
+    <div class="adb-text">
+        Привет, Хабрапользователь. Кажется, ты используешь AdBlock. Хабрахабр <br>
+        развивается и существует за счет доходов от рекламы. Добавь нас в исключения.
+    </div>
+    <a class="adb-btn" href="http://habrahabr.ru/adblock/" onclick="ga(&#39;send&#39;, &#39;pageview&#39;, { &#39;page&#39;: &#39;/virtual-pages/adblock/open_letter&#39;});return true;">открытое письмо</a>
+    <a class="adb-btn" href="http://habrahabr.ru/adblock/?how=1" onclick="ga(&#39;send&#39;, &#39;pageview&#39;, { &#39;page&#39;: &#39;/virtual-pages/adblock/show_instructions&#39;});return true;">как отключить</a>
+    <div class="adb-close" onclick="ga(&#39;send&#39;, &#39;pageview&#39;, { &#39;page&#39;: &#39;/virtual-pages/adblock/close_widget&#39;});return true;"></div>
+</div>
+
+
+
+
+        
+
+        
+
+        
+    <div class="user_header">
+
+  <a class="avatar" href="http://habrahabr.ru/users/printf/"><img src="./Тестирование. Начало _ Хабрахабр_files/71ee485e6c5cc740426c850b73a00eff.png" alt="avatar"></a>
+  <h2 class="username"><a href="http://habrahabr.ru/users/printf/">printf</a></h2>
+
+
+
+  <div class="karma  js-karma">
+    <div class="label">карма</div>
+    <div class="score">
+        
+
+        <div class="num js-karma_num">101,7</div>
+
+        
+    </div>
+    <div class="votes">219 голосов</div>
+  </div>
+
+  <div class="rating">
+    <div class="label">рейтинг</div>
+    <div class="num">0,0</div>
+  </div>
+
+
+  <div class="clear"></div>
+</div>
+
+
+  <div class="content_left">
+  	
+<table class="menu">
+    <tbody><tr>
+        <td class="item ">
+            <a href="http://habrahabr.ru/users/printf/"><span class="name">Профиль</span></a>
+        </td>
+        <td class="item  active">
+            <a href="http://habrahabr.ru/users/printf/topics/"><span class="name">Публикации (<span class="count">16</span>)</span></a>
+        </td>
+        <td class="item ">
+            <a href="http://habrahabr.ru/users/printf/comments/"><span class="name">Комментарии (<span class="count">699</span>)</span></a>
+        </td>
+        <td class="item ">
+            <a href="http://habrahabr.ru/users/printf/favorites/"><span class="name">Избранное (<span class="count">552</span>)</span></a>
+        </td>
+    </tr>
+</tbody></table>
+<div class="submenu ">
+
+</div>
+<div class="clear"></div>
+
+
+
+    <div class="post_show">
+  	  
+
+  <div class="post shortcuts_item" id="post_121162">
+    <div class="published">12 июня 2011 в 06:55</div>
+    <h1 class="title">
+      
+        <span class="post_title">Тестирование. Начало</span>
+      
+      
+    </h1>
+
+    <div class="hubs">
+		<a href="http://habrahabr.ru/hub/python/" class="hub " title="Вы не подписаны на этот хаб">Python</a><span class="profiled_hub" title="Профильный хаб">*</span>
+</div>
+
+
+    <div class="content html_format">
+      <img src="./Тестирование. Начало _ Хабрахабр_files/5e5c4cef.png" align="right"><br>
+Привет. В этой серии постов я попробую рассказать про тестирование кода на питоне, в частности проектов django. Мы рассмотрим модульное тестирование (юнит-тесты), статический анализ кода и некоторые подводные камни тестирования веб-сайтов.<br>
+<br>
+Вводную часть о пользе тестирования опустим — код, покрытый тестами, становится мягким и шелковистым, про это только ленивый еще не читал / писал.<br>
+<a name="habracut"></a><br>
+<h4>unittest</h4><br>
+Стандартный модуль для реализации юнит-тестов (unittest, ранее pyunit) появился в питоне версии 2.1 и являл собой порт JUnit с Java (даже именование методов оставили camelCase, вопреки <a href="http://www.python.org/dev/peps/pep-0008/">pep8</a>). В python 2.7 (3.2) в unittest добавили много новых интересных вещей: дополнительные проверки (<code>assert*</code>), декораторы, позволяющие пропустить отдельный тест (<code>@skip</code>, <code>@skipIf</code>) или обозначить сломанные тесты, о которых разработчику известно (<code>@expectedFailure</code>), изменился способ запуска из командной строки. Существует также порт этих изменений для питона 2.4 и выше, называется <a href="http://pypi.python.org/pypi/unittest2">unittest2</a>.<br>
+<br>
+Как эта штука работает. Предположим, у нас есть нечеловечески сложный модуль, run_once.py:<br>
+<br>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">run_once</span><span class="params">(f)</span>:</span>
+    <span class="string">"""
+    Мемоизация. Не зависит от аргументов.
+    """</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">_f</span><span class="params">(*args, **kwargs)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(_f, <span class="string">"_retval"</span>):
+            _f._retval = f(*args, **kwargs)
+        <span class="keyword">return</span> _f._retval
+    <span class="keyword">return</span> _f
+</code></pre><br>
+<sub>(Это декоратор, который сохраняет результат первого вызова функции-параметра и всегда возвращает сохраненное значение.)</sub><br>
+<br>
+Тест нашего модуля может выглядеть как-то так:<br>
+<br>
+<pre><code class="python"><span class="keyword">import</span> unittest
+
+<span class="class"><span class="keyword">class</span> <span class="title">Test</span><span class="params">(unittest.TestCase)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">test_run_once</span><span class="params">(self)</span>:</span>
+        <span class="decorator">@run_once</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(n)</span>:</span>
+            <span class="keyword">return</span> n + <span class="number">1</span>
+
+        <span class="comment"># это результат вызова функции inc()...</span>
+        self.assertEqual(inc(<span class="number">7</span>), <span class="number">8</span>)
+        <span class="comment"># ...а это -- сохраненное значение</span>
+        self.assertEqual(inc(<span class="number">0</span>), <span class="number">8</span>)
+
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    unittest.main()
+</code></pre><br>
+Последние две строки представляют собой пускалку, которая найдет и запустит все тесты в этом модуле. Теперь в консоли мы можем выполнить<br>
+<br>
+<pre><code class="bash">$ python run_once.py
+</code></pre><br>
+И пронаблюдать результат тестирования:<br>
+<br>
+<pre><code class="brainfuck"><span class="string">.</span>
+<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
+<span class="comment">Ran</span> <span class="comment">1</span> <span class="comment">test</span> <span class="comment">in</span> <span class="comment">0</span>.<span class="comment">000s</span>
+
+<span class="comment">OK</span>
+</code></pre><br>
+<h4>doctest</h4><br>
+Поскольку юнит-тестами в наши дни никого не удивишь, покажу одну штуку, специфичную для питона — доктесты (doctests). Это действительно проще показать, чем объяснить:<br>
+<br>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">run_once</span><span class="params">(f)</span>:</span>
+    <span class="string">"""
+    &gt;&gt;&gt; @run_once
+    ... def foo(n): return n + 1
+
+    &gt;&gt;&gt; foo(7)
+    8
+
+    &gt;&gt;&gt; foo(0)
+    8
+    """</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">_f</span><span class="params">(*args, **kwargs)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(_f, <span class="string">"_retval"</span>):
+            _f._retval = f(*args, **kwargs)
+        <span class="keyword">return</span> _f._retval
+    <span class="keyword">return</span> _f
+
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    <span class="keyword">import</span> doctest
+    doctest.testmod()
+</code></pre><br>
+Ключ на старт:<br>
+<br>
+<pre><code class="python">$ python run_once2.py -v
+Trying:
+    <span class="decorator">@run_once</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(n)</span>:</span> <span class="keyword">return</span> n + <span class="number">1</span>
+Expecting nothing
+ok
+Trying:
+    foo(<span class="number">7</span>)
+Expecting:
+    <span class="number">8</span>
+ok
+Trying:
+    foo(<span class="number">0</span>)
+Expecting:
+    <span class="number">8</span>
+ok
+<span class="number">1</span> items had no tests:
+    __main__
+<span class="number">1</span> items passed all tests:
+   <span class="number">3</span> tests <span class="keyword">in</span> __main__.run_once
+<span class="number">3</span> tests <span class="keyword">in</span> <span class="number">2</span> items.
+<span class="number">3</span> passed <span class="keyword">and</span> <span class="number">0</span> failed.
+Test passed.
+</code></pre><br>
+Мы видим, что docstring функции превратился в пример кода, одинаково понятный (надеюсь) и разработчику, и интерпретатору.<br>
+<br>
+По сравнению с классическими юнит-тестами, у доктестов есть как плюсы (простота написания, можно скопировать прямо из интерактивной сессии питона; документация всегда соответствует коду), так и минусы (сложный код быстро становится нечитаемым; текстовый редактор не подсветит такой код, а статический анализатор не найдет в нем ошибок). Впрочем, ничто не мешает применять докстесты для мелких очевидных вещей (как в примере), и юнит-тесты для более сложных задач.<br>
+<br>
+<h4>py.test</h4><br>
+Наряду с входящими в стандартную поставку питона средствами, существуют и альтернативные инструменты, например, <a href="http://doc.pytest.org/en/latest/">py.test</a>. Инсталляция происходит как обычно,<br>
+<br>
+<pre><code class="bash">easy_install -U pytest  <span class="comment"># или</span>
+pip install -U pytest
+</code></pre><br>
+Возьмем функцию из первого примера. Видоизмененный юнит-тест будет выглядеть как-то так:<br>
+<br>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">test_run_once</span><span class="params">()</span>:</span>
+    <span class="decorator">@run_once</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(n)</span>:</span>
+        <span class="keyword">return</span> n + <span class="number">1</span>
+
+    <span class="comment"># это результат вызова функции inc()...</span>
+    <span class="keyword">assert</span> inc(<span class="number">7</span>) == <span class="number">8</span>
+    <span class="comment"># ...а это -- сохраненное значение</span>
+    <span class="keyword">assert</span> inc(<span class="number">0</span>) == <span class="number">8</span>
+</code></pre><br>
+Поехали:<br>
+<br>
+<pre><code class="brainfuck"><span class="comment">$</span> <span class="comment">py</span>.<span class="comment">test</span> <span class="comment">run_once3</span>.<span class="comment">py</span> 
+<span class="comment">===</span> <span class="comment">test</span> <span class="comment">session</span> <span class="comment">starts</span> <span class="comment">===</span>
+<span class="comment">platform</span> <span class="comment">darwin</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">Python</span> <span class="comment">2</span>.<span class="comment">6</span>.<span class="comment">1</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">pytest</span>-<span class="comment">2</span>.<span class="comment">0</span>.<span class="comment">3</span>
+<span class="comment">collected</span> <span class="comment">1</span> <span class="comment">items</span> 
+
+<span class="comment">run_once3</span>.<span class="comment">py</span> <span class="string">.</span>
+
+<span class="comment">===</span> <span class="comment">1</span> <span class="comment">passed</span> <span class="comment">in</span> <span class="comment">0</span>.<span class="comment">01</span> <span class="comment">seconds</span> <span class="comment">===</span>
+</code></pre><br>
+Ключевые особенности py.test (хорошие): никакого API (справедливости ради: в исключительных случаях API все же бывает нужно, но его очень мало); проверки посредством assert. Это обеспечивает потенциальную возможность запустить тест даже без установленного py.test, например, на продакшен-сервере после выкладки (мало ли). Тесты можно оформлять как классами (в стиле unittest), так и просто функциями вида <code>test_*</code>.<br>
+<br>
+У отсутствия API, впрочем, есть и обратная сторона: новый разработчик, подключившись к проекту, может просто не понять, как запустить этот ворох функций. Впрочем, <i>настолько</i> новым разработчик пробудет совсем недолго, а способ запуска тестов лучше в любом случае документировать, от греха подальше.<br>
+<br>
+<h4>nose</h4><br>
+<a href="http://somethingaboutorange.com/mrl/projects/nose/1.0.0/">nose</a> — это инструмент для прогона тестов посредством unittest (и doctest, с ключом <code>--with-doctest</code>). Имеет также собственное API, использовать которое необязательно. Успешно отрабатывает на всех приведенных выше примерах:<br>
+<br>
+<pre><code class="r">$ nosetests * -v --with-doctest
+test_run_once (run_once.Test) <span class="keyword">...</span> ok
+Doctest: run_once2.run_once <span class="keyword">...</span> ok
+run_once3.test_run_once <span class="keyword">...</span> ok
+
+---
+Ran <span class="number">3</span> tests <span class="keyword">in</span> <span class="number">0.</span>008s
+
+OK
+</code></pre><br>
+Как подсказывает <a href="http://habrahabr.ru/users/yur4eg/" class="user_link">Yur4eg</a> (спасибо!), nose автоматически собирает тесты из файлов вида <code>test_*</code>, достаточно умен, чтобы заглянуть в папочку tests при наличии таковой, умеет измерять покрытие кода (code coverage) при помощи <a href="http://nedbatchelder.com/code/coverage/">coverage.py</a> (<nobr><code>--with-coverage</code></nobr>). Также можно запустить только тесты, которые отвалились в последний прогон (<nobr><code>--failed</code></nobr>).<br>
+<br>
+За сим откланиваюсь. Осталось только приложить <a href="http://cl.ly/1815320x2a1H3n3D2f0T">исходники примеров</a>, три штуки. Public domain.<br>
+<br>
+<i><a href="http://habrahabr.ru/blogs/django/122156/">В следующем выпуске</a>: штатные средства тестирования django и как с ними бороться.</i>
+
+      
+      <div class="clear"></div>
+    </div>
+    
+<ul class="tags">
+	<li><a href="http://habrahabr.ru/search/?q=%5Bpython%5D&target_type=posts" rel="tag">python</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5Bunittest%5D&target_type=posts" rel="tag">unittest</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5Bdoctest%5D&target_type=posts" rel="tag">doctest</a></li>
+</ul>
+
+      <div class="infopanel_wrapper">
+    <ul class="postinfo-panel postinfo-panel_post" id="infopanel_post_121162">
+      <!-- Виджет голосования за пост -->
+          <li class="postinfo-panel__item">
+            <div class="voting-wjt js-voting  ">
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_plus js-plus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↑</span>
+                </button>
+
+              <div class="voting-wjt__counter voting-wjt__counter_positive  js-mark">
+                  <span class="voting-wjt__counter-score js-score" title="Общий рейтинг 130: ↑119 и ↓11">+108</span>
+              </div>
+
+                <button type="button" disabled="" class="voting-wjt__button voting-wjt__button_minus js-minus" title="Голосовать могут только зарегистрированные пользователи.">
+                  <span>↓</span>
+                </button>
+
+            </div>
+          </li>
+
+      <!-- Количество просмотров публикации -->
+
+      <li class="postinfo-panel__item">
+        <div class="views-count_post" title="Просмотры публикации">30163</div>
+      </li>
+
+      <!-- Кнопка «Добавить в избранное» -->
+      <li class="postinfo-panel__item">
+        <div class="favorite-wjt favorite">
+            <button type="button" disabled="" class="favorite-wjt__button favorite-wjt__button_disabled" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять публикации в избранное">
+              <span>Добавить в избранное</span>
+            </button>
+          <span class="favorite-wjt__counter js-favs_count" title="Количество пользователей, добавивших публикацию в избранное">243</span>
+        </div>
+      </li>
+
+
+      <!-- шеринг в соцсети -->
+        <li class="postinfo-panel__item postinfo-panel__item_socials  postinfo-panel__item_socials_right ">
+          <ul class="post-share">
+            <li class="post-share__item">
+              <a href="http://twitter.com/intent/tweet?text=%D0%A2%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.+%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE+http://habr.ru/p/121162/+via+%40habrahabr+%23habr" class="post-share__item-link twitter" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://vk.com/share.php?url=http://habrahabr.ru/post/121162/" class="post-share__item-link vkontakte" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, &#39;Опубликовать ссылку во Вконтакте&#39;, &#39;width=800,height=300&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://habrahabr.ru/post/121162/" class="post-share__item-link facebook" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, &#39;Опубликовать ссылку в Facebook&#39;, &#39;width=640,height=436,toolbar=0,status=0&#39;); return false"></a>
+            </li>
+            <li class="post-share__item">
+              <a href="https://getpocket.com/edit?url=http://habrahabr.ru/post/121162/" target="_blank" class="post-share__item-link pocket" title="Добавить ссылку в Pocket"></a>
+            </li>
+          
+        </ul>
+
+      <!-- кнопка пожаловаться -->
+    </li></ul>
+  </div>
+
+        
+
+  <div class="author-info ">
+    <a href="http://habrahabr.ru/users/printf" class="author-info__image">
+      <img src="./Тестирование. Начало _ Хабрахабр_files/71ee485e6c5cc740426c850b73a00eff.png" class="author-info__image-pic">
+    </a>
+
+    <div class="author-info__desc">
+      <div class="author-info__username">
+          <a href="http://habrahabr.ru/users/printf" class="author-info__name">Рей</a>
+        <a href="http://habrahabr.ru/users/printf" class="author-info__nickname">@printf</a>
+
+        <div class="karma__widjet voting-wjt voting-wjt_small js-karma" title="Карма пользователя">
+
+
+          <div class="voting-wjt__counter voting-wjt__counter_positive">
+            <span class="voting-wjt__label">карма</span>
+            <span class="voting-wjt__counter-score js-karma_num">101,7</span>
+          </div>
+
+        </div>
+
+        <div class="user-rating" title="Рейтинг пользователя">
+          <span class="user-rating__label">рейтинг</span>
+          <span class="user-rating__value">0,0</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  </div>
+
+
+    </div>
+
+  	
+  <div id="adriver_banner_132032996" style="margin-top: 30px;"></div>
+
+  <script type="text/javascript">
+      /** Для блоков гугла **/
+      function requireAdsafe(file){
+          var head = document.getElementsByTagName("head")[0];
+          var script = document.createElement('script');
+          script.src = file;
+          script.type = 'text/javascript';
+          head.appendChild(script);
+      }
+
+      function show_inner_banner_block(name, url){
+          if( typeof(name) !== 'undefined'){
+              $('#adriver_banner_132032996').html('<iframe src="http://special.habrahabr.ru/api/htmlblock/'+name+'/?iframe&url='+encodeURIComponent(url)+'" width="100%" height="71"></iframe>')
+          }
+      }
+
+        $(function(){
+          var check_scroll_position = function() {
+            var height = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var scrollBottom = $(window).scrollTop() + height;
+            var blockTop = $('#adriver_banner_132032996').position().top;
+            var show = scrollTop < blockTop && blockTop < scrollBottom;
+
+            if( show ){
+                $( window ).off('scroll', check_scroll_position);
+                $( window ).trigger('show_bn3');
+            }
+          };
+
+
+          $( window ).on('show_bn3', function(){
+            var keyword = '';
+            if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+            var custom = { 4:ar_duo1 };
+                custom[1] = 'python';
+
+            //if (true)
+            //    show_inner_banner_block('raiffaizen2');
+            //else
+                new adriver("adriver_banner_132032996", {sid: 176776, bt: 52, bn: 3, custom: custom, keyword: keyword});
+          });
+
+          $( window ).on('scroll', check_scroll_position);
+          // $( window ).trigger('show_bn3');
+        });
+    </script>
+
+
+
+
+
+      <div class="block_after_post">
+        
+
+
+<div class="similar_posts">
+
+    <h2 class="title">Похожие публикации</h2>
+    <div class="posts_list">
+        <div class="post_item">
+            <span class="bull"></span>
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }" href="http://habrahabr.ru/post/266623/">Событийно-ориентированный бэктестинг на Python шаг за шагом. Часть 3</a>&nbsp;
+        </div>
+        <div class="post_item">
+            <span class="bull"></span>
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }" href="http://habrahabr.ru/post/266459/">Старый новый pywinauto: автоматизация Windows GUI на Python на примере install/uninstall</a>&nbsp;<span class="count">(13)</span>
+        </div>
+        <div class="post_item">
+            <span class="bull"></span>
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }" href="http://habrahabr.ru/post/264609/">Погружение в пучину интерпретатора Python. Ч1</a>&nbsp;<span class="count">(3)</span>
+        </div>
+        <div class="post_item">
+            <span class="bull"></span>
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }" href="http://habrahabr.ru/post/264367/">Vagrant, Python, Pycharm = (удобная, работа, Windows)</a>&nbsp;<span class="count">(36)</span>
+        </div>
+        <div class="post_item">
+            <span class="bull"></span>
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, &#39;common&#39;); }" href="http://habrahabr.ru/post/264141/">Событийно-ориентированный бэктестинг на Python шаг за шагом. Часть 2</a>&nbsp;<span class="count">(3)</span>
+        </div>
+    </div>
+</div>
+
+
+
+      </div>
+
+  		    <div class="comments_list " id="comments">
+
+        <h2 class="title ">Комментарии (<span id="comments_count">15</span>)
+            
+
+        </h2>
+
+        
+
+            <div class="comment_item" id="comment_3978696">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3978696">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3978696" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  negative">
+                    <span class="score" title="Всего 37: ↑13 и ↓24">–11</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/vosi/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/df2f72e893fa8fb886eac99e3d36e20e_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/vosi/" class="username">vosi</a>
+            <time>12 июня 2011 в 08:13</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3978696" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format bad bad5">
+            Интересно, какой ***звон поставил топику минус?<br>
+Я вот пару нюансов для себя нашел, спасибо автору!
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3978696">
+        <div class="comment_item" id="comment_3979972">
+
+    <span class="parent_id" data-parent_id="3978696"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3979972">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979972" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 6: ↑3 и ↓3">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Likvidator/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/a74d0c776dc4b597ec6211c6f16ad911_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Likvidator/" class="username">Likvidator</a>
+            <time>12 июня 2011 в 19:36</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979972" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="3979972" data-parent_id="3978696" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_3978696" data-id="3979972" data-parent_id="3978696" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Судя по всему тот же который поставил минус тебе
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979972">
+        <div class="comment_item" id="comment_6717692">
+
+    <span class="parent_id" data-parent_id="3979972"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="6717692">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_6717692" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/vit1251/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/b44ee17d4d1a09e6d351122861fdaa17_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/vit1251/" class="username">vit1251</a>
+            <time>12 сентября 2013 в 03:09</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_6717692" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="6717692" data-parent_id="3979972" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_3979972" data-id="6717692" data-parent_id="3979972" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Пора вводить плюсовую валютную систему:<br>
+<br>
+1. Каждый плюс и каждый минус дают 0. Таким образом надо заработать плюсы, что бы ставить минусы. А так же иметь возможность купить скажем минусы за $1 и использовать это как валюту. Таким образом выражение негативных эмоций будет сдерживаться здравым смыслом. Тот кто тяжело заработал плюс будет тяжело с ним расставаться.<br>
+<br>
+2. Каждый голос можно снабдить строчным комментарием, а так же ввести апелляцию по голосованию.<br>
+<br>
+P.S. Искал материал по написанию unittest и нашел статью. Для меня статья была полезна.<br>
+<br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_6717692">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3978784">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3978784">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3978784" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 2: ↑1 и ↓1">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Evgin/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/3ce6c4347a831b66c29b3d5a35c5789d_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Evgin/" class="username">Evgin</a>
+            <time>12 июня 2011 в 09:53</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3978784" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Спасибо за статью.<br>
+<br>
+p.s. I'm test infected.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3978784">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3978937">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="author_banned">НЛО прилетело и опубликовало эту надпись здесь</div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3978937">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3979121">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3979121">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979121" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Yur4eg/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/Yur4eg/" class="username">Yur4eg</a>
+            <time>12 июня 2011 в 13:16</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979121" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            nose как-то бегло освещен. Тем, кто не сталкивался, nose автоматически собирает тесты из файлов начинающихся на test_, он достаточно умен чтобы заглянуть в папочку tests, если такая присутствует, может показать покрытие кода тестами (модуль coverage). Имеет удобный режим, когда запускаются только не прошедшие в прошлый прогон тесты.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979121">
+        <div class="comment_item" id="comment_3979501">
+
+    <span class="parent_id" data-parent_id="3979121"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="3979501">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979501" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/printf/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/71ee485e6c5cc740426c850b73a00eff_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/printf/" class="username">printf</a>
+            <time>12 июня 2011 в 15:37</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979501" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="3979501" data-parent_id="3979121" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_3979121" data-id="3979501" data-parent_id="3979121" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Спасибо большое, добавил в пост.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979501">
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_3984798">
+
+    <span class="parent_id" data-parent_id="3979121"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3984798">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3984798" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/int0x80/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/int0x80/" class="username">int0x80</a>
+            <time>14 июня 2011 в 17:21</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3984798" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="3984798" data-parent_id="3979121" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_3979121" data-id="3984798" data-parent_id="3979121" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Более того, тесты не обязательно должны наследоваться от unittest.TestCase, он соберет классы начинающиеся на определенное регулярное выражение, тут описано подробнее: <a href="http://somethingaboutorange.com/mrl/projects/nose/1.0.0/finding_tests.html">somethingaboutorange.com/mrl/projects/nose/1.0.0/finding_tests.html</a><br>
+<br>
+И в примере звезда '*' не нужна скорее всего, будет работать и без нее.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3984798">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3979304">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="author_banned">НЛО прилетело и опубликовало эту надпись здесь</div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979304">
+        <div class="comment_item" id="comment_3979401">
+
+    <span class="parent_id" data-parent_id="3979304"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="3979401">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979401" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/printf/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/71ee485e6c5cc740426c850b73a00eff_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/printf/" class="username">printf</a>
+            <time>12 июня 2011 в 15:03</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979401" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="3979401" data-parent_id="3979304" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_3979304" data-id="3979401" data-parent_id="3979304" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Классная штука, не знал о ней, спасибо. Похожий синтаксис с явной регистрацией и декораторами предлагали для unittest2, но не реализовали, хотя мне это тоже кажется отличной идеей.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979401">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3979664">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3979664">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979664" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/MihailOlenin/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/MihailOlenin/" class="username">MihailOlenin</a>
+            <time>12 июня 2011 в 16:44</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979664" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Спасибо за статью, в которой рассказано про множество методов тестирования. Теперь на вопрос в жаббере «Расскажи как тестить код в python?» можно просто кинуть одну ссылку.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979664">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3979976">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3979976">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3979976" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/densh/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/densh/" class="username">densh</a>
+            <time>12 июня 2011 в 19:40</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3979976" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Несмотря на всю ограниченость doctest-ов их можно вполне удачно использовать когда серьезные тестовые библиотеки кажуться overkill-ом: <br>
+<br>
+<code>def test(f):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f.__doc__ = '&gt;&gt;&gt; %s()' % f.func_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return f<br>
+<br>
+@test<br>
+def foo():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;assert "b" + "a" + "z" == "baz"<br>
+<br>
+if __name__ == '__main__':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;import doctest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;doctest.testmod()<br>
+</code>
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3979976">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_3996082">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="3996082">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_3996082" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/oduvan/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/oduvan/" class="username">oduvan</a>
+            <time>18 июня 2011 в 11:27</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_3996082" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            <a href="http://www.lyabah.com/index.php/2011/06/10/testing-django-fixtures/">www.lyabah.com/index.php/2011/06/10/testing-django-fixtures/</a><br>
+<br>
+Только недавно писал статью у себя на тему джанго-тестов и фикстур.<br>
+<br>
+Возможно автору будет полезно для следующих статей
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_3996082">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_6717708">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="6717708">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_6717708" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Rascko/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/Rascko/" class="username">Rascko</a>
+            <time>12 сентября 2013 в 03:29</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_6717708" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Скажите, а для анализа coverage тестами в ключе питоновского кода что порекомендуете использовать?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_6717708">
+        <div class="comment_item" id="comment_6718468">
+
+    <span class="parent_id" data-parent_id="6717708"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="6718468">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_6718468" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/printf/" class="avatar"><img src="./Тестирование. Начало _ Хабрахабр_files/71ee485e6c5cc740426c850b73a00eff_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/printf/" class="username">printf</a>
+            <time>12 сентября 2013 в 10:52</time>
+
+            <a href="http://habrahabr.ru/post/121162/#comment_6718468" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="6718468" data-parent_id="6717708" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/121162/#comment_6717708" data-id="6718468" data-parent_id="6717708" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            python -m <a href="https://pypi.python.org/pypi/coverage">coverage</a><br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_6718468">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+
+
+  					<p class="for_users_only_msg">Только зарегистрированные пользователи могут оставлять комментарии. <a href="https://habrahabr.ru/auth/login/">Войдите</a>, пожалуйста.</p>
+
+
+
+
+    <div class="block_after_post">
+      
+
+  <div class="live_broadcast">
+    <h2 class="title">Что обсуждают?</h2>
+    <div class="posts_list">
+          <div class="post_item">
+            <span class="bull"></span>
+            <a href="http://habrahabr.ru/post/265677#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Мобильный этикет</a>&nbsp;<span class="count">(7)</span>
+          </div>
+          <div class="post_item">
+            <span class="bull"></span>
+            <a href="http://habrahabr.ru/post/266465#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">История одного факапа Яндекс.Навигатора. В шести действиях с прологом и раскаянием</a>&nbsp;<span class="count">(258)</span>
+          </div>
+          <div class="post_item">
+            <span class="bull"></span>
+            <a href="http://habrahabr.ru/post/258629#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Рефакторинг схем баз данных</a>&nbsp;<span class="count">(16)</span>
+          </div>
+          <div class="post_item">
+            <span class="bull"></span>
+            <a href="http://habrahabr.ru/post/266641#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Существует ли простой алгоритм работы интеллекта?</a>&nbsp;<span class="count">(38)</span>
+          </div>
+          <div class="post_item">
+            <span class="bull"></span>
+            <a href="http://habrahabr.ru/post/266649#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Зачем нужны почты no-reply@?</a>&nbsp;<span class="count">(99)</span>
+          </div>
+    </div>
+  </div>
+
+    </div>
+
+
+  	
+<form action="http://habrahabr.ru/json/favorites/" method="post" id="edit_tags_form" class="hidden">
+  <input type="hidden" name="action" value="add">
+  <input type="hidden" name="ti" value="0">
+  <input type="hidden" name="tt" value="0">
+  <label>Пометьте топик понятными вам метками, если хотите</label>
+  <input type="text" name="tags_string" class="tags_string" autocomplete="off">
+  <div class="description">Метки лучше разделять запятой. Например: <i>общение, социальные сети, myspace.com, подростки, мердок</i></div>
+  <input type="submit" value="Сохранить" class="submit"> или <a href="http://habrahabr.ru/post/121162/#" class="close" onclick="return close_edit_tags()">закрыть</a>
+</form>
+
+
+
+  </div>
+  <div class="sidebar_right">
+  		<div class="banner_300x500">
+    <div id="adriver_banner_1863387959" title="" style="width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&ad=528946&bid=4038242&bt=52&bn=1&pz=0&xpid=C7JXzWrs8U-2BXVdzUdHNKx1kdvzEsnT2&ref=http:%2f%2fhabrahabr.ru%2fpost%2f121162%2f&custom=1%3Dpython%3B4%3D2&rleurl=" target="_blank" onclick="adriver(&#39;adriver_banner_1863387959&#39;).sendPixel(&#39;&#39;);"><img src="./Тестирование. Начало _ Хабрахабр_files/YES_300x500_lifehacker_ru.gif" height="100%" alt="AdRiver" border="0"></a></div>
+
+    <script type="text/javascript">
+        function show_bn1_block(name, url){
+            console.log('show' + name);
+            if( typeof(name) !== 'undefined'){
+                $.get('/html/'+name+'/1441972198/', function(html){
+                    $('#adriver_banner_1863387959').html(html);
+                    if( typeof(url) !== 'undefined'){
+                        $('.'+name+'_inner_banner .block_url').attr('href', url);
+                    }
+                })
+            }
+        }
+
+        $(function(){
+
+            // конвертирут кириллицу в cp1251
+            // doc: http://www.adriver.ru/doc/edu-n/pub/settargt/standtrgt/scentrgt/scentrgt.html#9
+            function esc(s){
+                for(var i=0,l=s.length,r='';i<l;i++){
+                    var c = s.charCodeAt(i);r += String.fromCharCode(c>1039&&c<1104 ? c-848 : c==1105 ? 184 : c==1025 ? 168 : c);
+                }
+                return r;
+            }
+
+            var keyword = '';
+
+            if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+
+
+
+            var custom = {4:ar_duo1};
+                custom[1] = 'python';
+
+             new adriver("adriver_banner_1863387959", {sid: 176776, bt: 52, bn: 1, custom: custom, keyword: keyword});
+
+
+
+
+            var check_scroll_position10 = function() {
+                var height = $(window).height();
+                var scrollTop = $(window).scrollTop();
+                var blockTop = $('#adriver_banner_1863387959').position().top;
+                var show = scrollTop < (blockTop + 900) && typeof(bn2Showed) != 'undefined';
+                if( show ){
+                    $( window ).off('scroll', check_scroll_position10);
+                    $( window ).trigger('show_bn10');
+                }
+            };
+
+            $( window ).on('show_bn10', function(){
+                $('#adriver_banner_1863387959').html('');
+                var pz = Math.floor(Math.random()*3+1);
+                var uu = new adriver("adriver_banner_1863387959", { sid: 176776, bt: 52, bn: 1, pz: pz});
+                uu.reload();
+            });
+
+            $( window ).on('scroll', check_scroll_position10);
+
+        }());
+
+
+
+
+    </script>
+</div>
+
+  		
+<div class="block daily_best_posts float_block" style="width: 260px; opacity: 1;">
+
+
+  <div class="title">Популярное за сутки</div>
+  <div class="posts_list">
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/mosigra/blog/266649/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Зачем нужны почты no-reply@?</a>&nbsp;<a href="http://habrahabr.ru/company/mosigra/blog/266649/#comments" class="count">99</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/tottoli_gsm/blog/266627/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Сам себе виртуальный оператор</a>&nbsp;<a href="http://habrahabr.ru/company/tottoli_gsm/blog/266627/#comments" class="count">33</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/abbyy/blog/266551/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Распознать нельзя оставить картинкой, или кое-что о сложных случаях оптического распознавания текста</a>&nbsp;<a href="http://habrahabr.ru/company/abbyy/blog/266551/#comments" class="count">7</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/metrotek/blog/266561/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Разрабатываем систему мониторинга на 55000 видео-потоков RTP</a>&nbsp;<a href="http://habrahabr.ru/company/metrotek/blog/266561/#comments" class="count">19</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/mailru/blog/266613/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Утиные истории: утка ищет баги</a>&nbsp;<a href="http://habrahabr.ru/company/mailru/blog/266613/#comments" class="count">10</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/ibm/blog/266647/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">IBM сделает платформу NodeJS стандартом корпоративной разработки</a>&nbsp;<a href="http://habrahabr.ru/company/ibm/blog/266647/#comments" class="count">14</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/1cloud/blog/266641/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Существует ли простой алгоритм работы интеллекта?</a>&nbsp;<a href="http://habrahabr.ru/company/1cloud/blog/266641/#comments" class="count">38</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/ua-hosting/blog/253823/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Мистический дата-центр</a>&nbsp;<a href="http://habrahabr.ru/company/ua-hosting/blog/253823/#comments" class="count">7</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/itinvest/blog/266623/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Событийно-ориентированный бэктестинг на Python шаг за шагом. Часть 3</a>&nbsp;
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/265929/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Пишем синтезатор для концерта. Полевые испытания PureData</a>&nbsp;<a href="http://habrahabr.ru/post/265929/#comments" class="count">8</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266639/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Зaчем мне AshleyMadison, если я не курю?</a>&nbsp;<a href="http://habrahabr.ru/post/266639/#comments" class="count">13</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266645/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Как независимый разработчик прикоснулся к легенде. Часть вторая</a>&nbsp;<a href="http://habrahabr.ru/post/266645/#comments" class="count">11</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266665/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Использование React JSX вместе с TypeScript 1.6</a>&nbsp;<a href="http://habrahabr.ru/post/266665/#comments" class="count">1</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266453/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Как я писал карту дождей</a>&nbsp;<a href="http://habrahabr.ru/post/266453/#comments" class="count">3</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/icl_services/blog/266637/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Поддержка окончена: Что делать? Кто и что может помочь?</a>&nbsp;<a href="http://habrahabr.ru/company/icl_services/blog/266637/#comments" class="count">2</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/altegro/blog/266651/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">A-SIM, настройся! Специальная сим-карта и много-много входящих номеров</a>&nbsp;<a href="http://habrahabr.ru/company/altegro/blog/266651/#comments" class="count">4</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266669/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Настройка Vim-like управления в GTK</a>&nbsp;
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266677/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Небольшой путеводитель по ZPL</a>&nbsp;
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/dataart/blog/266539/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Навигация в закрытых помещениях – от идеи до рабочего прототипа</a>&nbsp;<a href="http://habrahabr.ru/company/dataart/blog/266539/#comments" class="count">8</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/266667/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Подключение к Git по SSH в Windows без PuttyGen на примере BitBucket</a>&nbsp;<a href="http://habrahabr.ru/post/266667/#comments" class="count">27</a>
+      </div>
+  </div>
+  <div class="all"><a href="http://habrahabr.ru/top/">все лучшие</a></div>
+</div>
+
+	    
+	  	
+
+  	  
+
+  		<!--  AdRiver code START. Type:AjaxJS Site: habrahabr PZ: 0 BN: 2 -->
+
+<div id="adriver_banner_480931290" class="adbanner" title="" style="width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&ad=538474&bid=4012215&bt=52&bn=2&pz=0&xpid=CHoKecGy3Ic1_jC6HHCuwLnNiuVIC1fef&ref=http:%2f%2fhabrahabr.ru%2fpost%2f121162%2f&custom=1%3Dpython%3B4%3D2&rleurl=" target="_blank" onclick="adriver(&#39;adriver_banner_480931290&#39;).sendPixel(&#39;&#39;);"><img src="./Тестирование. Начало _ Хабрахабр_files/bn2-rvk-2.png" height="100%" alt="AdRiver" border="0"></a></div>
+
+
+<script type="text/javascript">
+    function show_bn2_block(name, url){
+        if( typeof(name) !== 'undefined'){
+            $.get('/html/'+name+'/1441972198/', function(html){
+                $('#adriver_banner_480931290').html(html);
+                if( typeof(url) !== 'undefined'){
+                    $('.'+name+'_inner_banner .block_url').attr('href', url);
+                }
+            })
+        }
+    }
+
+    $(function(){
+
+        var check_scroll_position = function() {
+            var height = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var scrollBottom = $(window).scrollTop() + height;
+            var blockTop = $('#adriver_banner_480931290').position().top;
+            var show = scrollTop < blockTop && blockTop < scrollBottom;
+            if( show ){
+                $( window ).off('scroll', check_scroll_position);
+                $( window ).trigger('show_bn2');
+                bn2Showed = true;
+            }
+        };
+
+        $( window ).on('show_bn2', function(){
+            var keyword = '';
+            if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+            var custom = {4:ar_duo1};
+            custom[1] = 'python';
+            new adriver("adriver_banner_480931290", {sid: 176776, bt: 52, bn: 2, custom: custom, keyword: keyword});
+
+        });
+
+        $( window ).on('scroll', check_scroll_position);
+        // $( window ).trigger('show_bn2');
+
+
+    });
+    </script>
+<!--  AdRiver code END  -->
+
+  		
+<div class="block best_company">
+
+		<div class="title">Компания дня <img src="./Тестирование. Начало _ Хабрахабр_files/bg_cicle_help.png" class="help-tip"></div>
+
+		<div class="company_info">
+			<div class="name">
+			 <img class="favicon" src="./Тестирование. Начало _ Хабрахабр_files/a458359bfb5530a6701ff1890863c08b_small.png" alt="Voximplant" height="16" width="16">
+			 <div class="company_name"><a href="http://habrahabr.ru/company/Voximplant/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;best_company&#39;, &#39;title&#39;); }" class="title">Voximplant</a></div>
+			</div>
+
+			<p>Последняя публикация:
+				<a href="http://habrahabr.ru/company/Voximplant/blog/266305/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;best_company&#39;, &#39;post&#39;); }">Секреты Stack Overflow</a>
+			</p>
+
+			<div class="buttons">
+  			<div id="fans_count">114 подписчиков</div>
+			</div>
+		</div>
+
+	</div>
+
+
+  		
+  		
+  		
+  </div>
+  <div class="clear"></div>
+
+  <script>
+    // hubs to GA
+      ga('send', 'event', 'Post_view', 'python (Python)');
+  </script>
+
+
+
+
+        	
+	<div class="rotated_posts">
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/261161/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">Захват пакетов в Linux на скорости десятки миллионов пакетов в секунду без использования сторонних библиотек</a>
+			</div>
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/company/yandex/blog/265569/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">15 тривиальных фактов о правильной работе с протоколом HTTP</a>
+			</div>
+			<div class="rotated_post last">
+				<a href="http://habrahabr.ru/company/1cloud/blog/262257/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">Твердотельные накопители дали слабину</a>
+			</div>
+		<div class="clear"></div>
+	</div>
+
+        <div class="bottom_promo_blocks">
+    <div class="left">
+            
+
+	<div class="block new_vacanies">
+  <a href="https://moikrug.ru/vacancies" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo" class="title">Вакансии на «Моём круге»</a>
+  <div class="vacancies">
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020899" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Senior JavaScript Developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item marked">
+			<a href="http://moikrug.ru/vacancies/1000020877" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Senior back-end engineer&amp;developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020884" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Front-end developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020864" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Java Developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020856" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Java developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020753" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Frontend developer с релокацией в Прагу</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/343934661" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Javascript developer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020839" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">PHP разработчик</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020837" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Тестировщик ПО / QA Automate Engineer</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+		<div class="job_item ">
+			<a href="http://moikrug.ru/vacancies/1000020809" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Senior Python разработчик</a>
+                <span class="city">(Санкт-Петербург)</span>
+
+		</div>
+  </div>
+  <div class="footer_panel">
+    <a href="https://moikrug.ru/info/service?utm_source=tm_habrahabr&utm_medium=tm_block&utm_campaign=tm_promo" class="right_link">разместить вакансию</a>
+    <a href="https://moikrug.ru/vacancies" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">все вакансии</a>
+  </div>
+</div>
+
+    </div>
+    <div class="right">
+        
+	<div class="block freelansim">
+	  <a href="http://freelansim.ru/" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim" class="title">Заказы на «Фрилансим»</a>
+	  <div class="tasks">
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121967" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Разработка плагина под crome</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121949" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Верстка и программирование сайта на OpenCart</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121965" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Опытный Ror backend разработчик WANTED</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121961" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Нужен программист в интернет-магазин. Платформа Modx Evolution</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121957" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Привязка админки к API</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121953" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Порт приложения на Андроид</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121951" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Консультация по Google Adwords</a>
+				</div>
+				<div class="task marked">
+					<a href="http://freelansim.ru/tasks/121895" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Написать php парсер на PhantomJS</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121947" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Корпоративный сайт на 1С-Битрикс</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/121711" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Требуется доработать функционал сайта PHP/Codeigniter</a>
+				</div>
+
+	  </div>
+	  <div class="footer_panel">
+      <a href="http://freelansim.ru/?utm_source=habrahabr&utm_medium=referral&utm_campaign=mainpage&utm_content=block_freelansim" class="right_link">разместить заказ</a>
+      <a href="http://freelansim.ru/tasks" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">все заказы</a>
+    </div>
+	</div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+
+        <div class="clear"></div>
+
+        <div class="footer_panel">
+          <div id="footer">
+  <dl>
+    <dd><a href="https://habrahabr.ru/auth/login/">Войти</a></dd>
+    <dd><a href="https://habrahabr.ru/auth/register/">Регистрация</a></dd>
+  </dl>
+  <dl>
+    <dt>Разделы</dt>
+    <dd><a href="http://habrahabr.ru/posts/top/">Публикации</a></dd>
+    <dd><a href="http://habrahabr.ru/hubs/">Хабы</a></dd>
+    <dd><a href="http://habrahabr.ru/companies/">Компании</a></dd>
+    <dd><a href="http://habrahabr.ru/users/">Пользователи</a></dd>
+    <dd><a href="http://toster.ru/?_aa=press_anykey">Q&amp;A</a></dd>
+    <dd><a href="http://habrahabr.ru/sandbox/">Песочница</a></dd>
+
+  </dl>
+  <dl>
+    <dt>Инфо</dt>
+    <dd><a href="http://habrahabr.ru/info/about/">О сайте</a></dd>
+    <dd><a href="http://habrahabr.ru/info/help/rules/">Правила</a></dd>
+    <dd><a href="http://habrahabr.ru/info/help/">Помощь</a></dd>
+    <dd><a href="http://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+  </dl>
+  <dl>
+    <dt>Услуги</dt>
+    <dd><a href="http://special.habrahabr.ru/advertising/">Реклама</a></dd>
+      <dd><a href="http://special.habrahabr.ru/">Спецпроекты</a></dd>
+      <dd><a href="http://special.habrahabr.ru/corporate/">Тарифы</a></dd>
+      <dd><a href="http://special.habrahabr.ru/content/">Контент</a></dd>
+      <dd><a href="http://special.habrahabr.ru/workshops/">Вебинары</a></dd>
+  </dl>
+
+  <dl>
+    <dt>Разное</dt>
+    <dd><a href="http://habrahabr.ru/apps/">Приложения</a></dd>
+    <dd><a href="http://habrahabr.ru/special/testdrive/">Тест-драйвы</a></dd>
+    <dd><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=482836&bt=21&pid=1727881&bid=3951078&bn=3951078&rnd=1676524432">Помощь стартапам</a></dd>
+      <dd><a href="http://special.habrahabr.ru/#hr">Работа в IT</a></dd>
+  </dl>
+  <div class="copyright">
+
+    <div class="about">
+      <a href="http://tmtm.ru/">© TM</a>
+
+      <br><br>
+      <a href="http://habrahabr.ru/feedback/">Служба поддержки</a><br><br>
+          <a href="http://m.habrahabr.ru/post/121162/?mobile=yes">Мобильная версия</a><br><br>
+
+
+      <div class="social_accounts">
+        <a href="https://twitter.com/habrahabr" class="tw"></a>
+        <a href="https://www.facebook.com/habrahabr.ru" class="fb"></a>
+        <a href="http://vk.com/habr" class="vk"></a>
+        <!-- <a href="" class="gp"></a> //-->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+      <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/jquery.cookie.js"></script>
+      <script type="text/javascript">
+        $(document).ready( function(){
+          window.tmidLogin = function(){ return false; };
+          if( $.cookie('tmid_no_check') == undefined ) {
+            var expire = new Date();
+            expire.setMinutes(expire.getMinutes() + 10 );
+            $.cookie('tmid_no_check', 1, { expires: expire } );
+            $.getScript("https://id.tmtm.ru/checklogin/", function(){
+              if( window.tmidLogin() ) {
+
+                  var href = $('#login').attr('href');
+
+                  if( href !== undefined ) {
+                      window.location.href = href;
+                  }
+              }
+            });
+          }
+        });
+      </script>
+
+    <script type="text/javascript">
+  // global vars
+  var g_base_url = 'habrahabr.ru';
+  var g_show_xpanel = false;
+  var g_base_fullurl = 'http://habrahabr.ru/';
+  var g_is_guest = false;
+</script> 
+
+      <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/shortcuts.js"></script>
+
+    <script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/global_footer_main.js"></script>
+
+    	<script type="text/javascript" src="./Тестирование. Начало _ Хабрахабр_files/saved_resource"></script>
+
+    
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24049213 = new Ya.Metrika({id:24049213,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/24049213" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+<!-- adriver counter //-->
+<span style="position:absolute;left:-9999px;bottom:-20px">
+  <img src="./Тестирование. Начало _ Хабрахабр_files/rle.cgi" width="1" height="1" alt="">
+</span>
+<!-- adriver counter end //-->
+
+
+    <!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '322477921209238');
+    fbq('track', 'PageView');
+</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=322477921209238&amp;ev=PageView&amp;noscript=1"
+        /&gt;</noscript>
+<!-- End Facebook Pixel Code -->
+
+    
+
+    <!-- Хабр не резиновый! -->
+  
+
+<div id="tiptip_holder" style="max-width:auto;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><div id="AutocompleteContainter_b64a7" style="position: absolute; z-index: 9999; top: 0px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_b64a7" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="AutocompleteContainter_9c540" style="position: absolute; z-index: 9999; top: 602.666666666667px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_9c540" style="display: none; width: 300px; max-height: 400px;"></div></div></div><iframe src="./Тестирование. Начало _ Хабрахабр_files/3.html" style="width: 10px; height: 10px; position: absolute; top: -10000px; left: -10000px;"></iframe><iframe src="./Тестирование. Начало _ Хабрахабр_files/3(1).html" style="width: 10px; height: 10px; position: absolute; top: -10000px; left: -10000px;"></iframe></body></html>
